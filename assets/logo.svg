@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" fill="none">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#00E0FF"/>
+      <stop offset="1" stop-color="#FFD000"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="32" fill="#0b0f14"/>
+  <g stroke="url(#g)" stroke-width="12">
+    <circle cx="256" cy="256" r="160"/>
+    <path d="M256 96v64M256 352v64M416 256h-64M160 256H96"/>
+    <path d="M176 176l40 40m80 80l40 40M336 176l-40 40m-80 80l-40 40"/>
+  </g>
+  <text x="256" y="468" text-anchor="middle" font-family="Orbitron, sans-serif" font-size="48" fill="#dce3ea">ВАР</text>
+</svg>
+
+
