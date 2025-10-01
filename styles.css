@@ -37,7 +37,7 @@ body {
 
 .site-nav { margin-left: auto; display: flex; gap: 14px; }
 .site-nav a { color: var(--muted); text-decoration: none; padding: 8px 10px; border-radius: 8px; }
-.site-nav a:hover { color: var(--text); background: var(--bg-elev); }
+.site-nav a:hover, .site-nav a[aria-current="page"] { color: var(--text); background: var(--bg-elev); }
 .nav-toggle { display: none; margin-right: 4px; font-size: 20px; background: transparent; color: var(--text); border: 1px solid var(--border); border-radius: 8px; padding: 6px 10px; }
 
 .hero {
@@ -62,7 +62,7 @@ body {
 .feature-list li { margin: 8px 0; }
 
 .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; }
-.card { background: var(--bg-elev); border: 1px solid var(--border); border-radius: 12px; padding: 16px; }
+.card { background: var(--bg-elev); border: 1px solid var(--border); border-radius: 12px; padding: 16px; color: var(--text); text-decoration: none; }
 .card__avatar { width: 64px; height: 64px; border-radius: 50%; border: 2px solid var(--accent); background: #071018; }
 .muted { color: var(--muted); }
 
@@ -72,9 +72,6 @@ body {
 
 .charter { padding-left: 18px; }
 .rules { padding-left: 18px; }
-
-.server-info { display: grid; gap: 8px; padding: 12px; background: var(--bg-elev); border: 1px solid var(--border); border-radius: 10px; }
-.server-info .label { color: var(--muted); margin-right: 6px; }
 
 .apply { display: grid; gap: 10px; background: var(--bg-elev); border: 1px solid var(--border); border-radius: 12px; padding: 14px; }
 .apply input, .apply select, .apply textarea { width: 100%; background: #0c1218; color: var(--text); border: 1px solid var(--border); border-radius: 10px; padding: 10px 12px; }
@@ -91,5 +88,4 @@ body {
 }
 
 ::selection { background: rgba(0,224,255,0.25); color: #fff; }
-
 

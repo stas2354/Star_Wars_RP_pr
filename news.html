@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Правила — ВАР</title>
+  <title>Новости — ВАР</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./styles.css">
   <link rel="icon" href="./assets/logo.svg">
@@ -16,29 +16,38 @@
       <span class="brand__name">ВАР — Великая Армия Республики</span>
     </a>
     <nav class="site-nav" aria-label="Навигация">
-      <a href="./news.html">Новости</a>
+      <a href="./news.html" aria-current="page">Новости</a>
       <a href="./creators.html">Создатели</a>
       <a href="./hierarchy.html">Иерархия</a>
       <a href="./charter.html">Устав</a>
-      <a href="./rules.html" aria-current="page">Правила</a>
+      <a href="./rules.html">Правила</a>
       <a href="./admin.html">Админ</a>
     </nav>
   </header>
 
   <main class="section">
-    <h1>Правила сервера</h1>
-    <ul class="rules">
-      <li><strong>RP прежде всего:</strong> оставайся в роли, соблюдай лор.</li>
-      <li><strong>Коммуникация:</strong> каналы и радиосвязь по регламентам.</li>
-      <li><strong>Честная игра:</strong> запрещены читы, макросы, абьюз.</li>
-      <li><strong>Поведение:</strong> без оскорблений, провокаций и дискриминации.</li>
-      <li><strong>Админ‑состав:</strong> подчиняйся указаниям, апелляции — по форме.</li>
-    </ul>
+    <h1>Новости</h1>
+    <div id="news-list" class="cards"></div>
   </main>
 
   <footer class="site-footer">
     <p>© ВАР RP — неофициальный фан‑проект.</p>
   </footer>
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const list = document.getElementById('news-list');
+    try {
+      const items = JSON.parse(localStorage.getItem('var_news') || '[]');
+      if (!items.length) { list.innerHTML = '<p class="muted">Пока нет новостей.</p>'; return; }
+      list.innerHTML = items.map(n => `
+        <article class="card">
+          <h3>${n.title}</h3>
+          <p class="muted">${new Date(n.date).toLocaleString('ru-RU')}</p>
+          <p>${n.text}</p>
+        </article>`).join('');
+    } catch (e) { list.innerHTML = '<p class="muted">Ошибка загрузки новостей.</p>'; }
+  });
+  </script>
   <script src="./script.js" defer></script>
 </body>
 </html>

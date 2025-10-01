@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Админ — ВАР</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+  <link rel="icon" href="./assets/logo.svg">
+</head>
+<body>
+  <header class="site-header">
+    <button class="nav-toggle" aria-label="Открыть меню" aria-expanded="false">☰</button>
+    <a class="brand" href="./index.html">
+      <img src="./assets/logo.svg" alt="ВАР" class="brand__logo">
+      <span class="brand__name">ВАР — Великая Армия Республики</span>
+    </a>
+    <nav class="site-nav" aria-label="Навигация">
+      <a href="./news.html">Новости</a>
+      <a href="./creators.html">Создатели</a>
+      <a href="./hierarchy.html">Иерархия</a>
+      <a href="./charter.html">Устав</a>
+      <a href="./rules.html">Правила</a>
+      <a href="./admin.html" aria-current="page">Админ</a>
+    </nav>
+  </header>
+
+  <main class="section">
+    <h1>Админ‑панель новостей</h1>
+    <div class="grid two">
+      <form id="news-form" class="apply" autocomplete="off">
+        <label>Заголовок<input id="title" type="text" required></label>
+        <label>Текст новости<textarea id="text" rows="6" required></textarea></label>
+        <button type="submit">Опубликовать</button>
+      </form>
+      <div>
+        <h3>Предпросмотр</h3>
+        <article class="card" id="preview">
+          <h3 class="pv-title muted">Введите заголовок…</h3>
+          <p class="pv-date muted"></p>
+          <p class="pv-text">Текст новости появится здесь.</p>
+        </article>
+        <button id="clear" class="cta" style="margin-top:12px;">Очистить все новости</button>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>© ВАР RP — неофициальный фан‑проект.</p>
+  </footer>
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('news-form');
+    const title = document.getElementById('title');
+    const text = document.getElementById('text');
+    const pvTitle = document.querySelector('.pv-title');
+    const pvText = document.querySelector('.pv-text');
+    const pvDate = document.querySelector('.pv-date');
+    const clearBtn = document.getElementById('clear');
+
+    function updatePreview(){
+      pvTitle.textContent = title.value || 'Введите заголовок…';
+      pvText.textContent = text.value || 'Текст новости появится здесь.';
+      pvDate.textContent = new Date().toLocaleString('ru-RU');
+    }
+    title.addEventListener('input', updatePreview);
+    text.addEventListener('input', updatePreview);
+    updatePreview();
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const items = JSON.parse(localStorage.getItem('var_news') || '[]');
+      items.unshift({ title: title.value.trim(), text: text.value.trim(), date: Date.now() });
+      localStorage.setItem('var_news', JSON.stringify(items));
+      title.value = '';
+      text.value = '';
+      updatePreview();
+      alert('Новость опубликована!');
+    });
+
+    clearBtn.addEventListener('click', () => {
+      if (confirm('Удалить все новости?')) { localStorage.removeItem('var_news'); alert('Очищено.'); }
+    });
+  });
+  </script>
+  <script src="./script.js" defer></script>
+</body>
+</html>
+
+

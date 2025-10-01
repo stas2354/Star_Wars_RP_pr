@@ -7,15 +7,6 @@ document.addEventListener('DOMContentLoaded', () => {
       navToggle.setAttribute('aria-expanded', String(isOpen));
     });
   }
-
-  const form = document.querySelector('.apply');
-  if (form) {
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      alert('Заявка отправлена! Мы свяжемся в Discord.');
-      form.reset();
-    });
-  }
 });
 
 
