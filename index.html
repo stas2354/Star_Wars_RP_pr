@@ -1,77 +1,836 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ВАР — RP сервер Star Wars (Garry's Mod)</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./styles.css">
-  <link rel="icon" href="./assets/logo.svg">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Правила проекта LIQUID</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <link rel="stylesheet" href="styles.css?v=5">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-  <header class="site-header">
-    <button class="nav-toggle" aria-label="Открыть меню" aria-expanded="false">☰</button>
-    <a class="brand" href="./index.html">
-      <img src="./assets/logo.svg" alt="ВАР" class="brand__logo">
-      <span class="brand__name">ВАР — Великая Армия Республики</span>
-    </a>
-    <nav class="site-nav" aria-label="Главная навигация">
-      <a href="./news.html">Новости</a>
-      <a href="./creators.html">Создатели</a>
-      <a href="./hierarchy.html">Иерархия</a>
-      <a href="./charter.html">Устав</a>
-      <a href="./rules.html">Правила</a>
-      <a href="./admin.html">Админ</a>
-    </nav>
-  </header>
-
-  <main id="top">
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="hero__overlay"></div>
-      <div class="hero__content">
-        <h1 id="hero-title">RP сервер по Star Wars в Garry's Mod</h1>
-        <p>Погрузись в эпоху Войн клонов: дисциплина, тактика и атмосфера Великой Армии Республики.</p>
-        <a class="cta" href="./news.html">К новостям</a>
-      </div>
+    
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-tint"></i>
+                    <h1>LIQUID</h1>
+                </div>
+                
+                <div class="search-container">
+                    <input type="text" id="globalSearch" placeholder="Поиск по правилам..." class="search-input">
+                    <div id="searchResults" class="search-results"></div>
+                    <button id="clearSearch" class="clear-search-btn" style="display: none;">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="theme-toggle">
+                    <i class="fas fa-moon"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Кнопка сайдбара вынесена наружу -->
+    <button class="sidebar-toggle" id="sidebarToggle" aria-label="Открыть список глав" title="Открыть навигацию по главам">
+        <i class="fas fa-bars"></i>
+    </button>
+    
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-inner">
+            <nav class="chapters-nav" id="chaptersNav">
+                <button class="chapter-link" data-target="#intro">Введение</button>
+                <button class="chapter-link" data-target="#chapter1">Глава 1</button>
+                <button class="chapter-link" data-target="#chapter2">Глава 2</button>
+                <button class="chapter-link" data-target="#chapter3">Глава 3</button>
+                <button class="chapter-link" data-target="#chapter4">Глава 4</button>
+                <button class="chapter-link" data-target="#chapter5">Глава 5</button>
+            </nav>
+        </div>
+    </aside>
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">СВОД ВНУТРИИГРОВЫХ ПРАВИЛ</h1>
+                <h2 class="hero-subtitle">ПРОЕКТА "LIQUID"</h2>
+                <p class="hero-description">
+                    Правила для поддержания стабильности и игровой атмосферы на сервере
+                </p>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">5</span>
+                        <span class="stat-label">Глав</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">50+</span>
+                        <span class="stat-label">Правил</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">24/7</span>
+                        <span class="stat-label">Модерация</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="intro" class="section intro-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Введение</h2>
+                <div class="section-divider"></div>
+            </div>
+            <div class="intro-content">
+                <div class="intro-text">
+                    <p class="intro-paragraph">
+                        Правило — термин, обозначающий действие или определённую последовательность ряда действий, 
+                        обеспечивающих стабильность применения наиболее эффективного, по сравнению с ранее применяемыми, 
+                        метода для достижения намеченной цели, решения поставленной задачи или выполнения определенной функции.
+                    </p>
+                    <p class="intro-paragraph">
+                        Для чего же нужны эти правила? Давайте представим какое-то суверенное государство, у которого нет законов, 
+                        регламентов, или каких-то правил, как думаете, что будет происходить внутри него? Правильно, - хаос, 
+                        соответственно, правила нужны для того, чтобы поддерживать сервер в стабильном состоянии дабы он был играбельным.
+                    </p>
+                </div>
+                <div class="important-rules">
+                    <h3>Важные положения:</h3>
+                    <ul class="rules-list">
+                        <li><i class="fas fa-exclamation-triangle"></i> Незнание правил не освобождает вас от ответственности</li>
+                        <li><i class="fas fa-handshake"></i> Играя на нашем сервере, вы соглашаетесь со всеми правилами</li>
+                        <li><i class="fas fa-gavel"></i> Основатели проекта имеют право выносить вердикт</li>
+                        <li><i class="fas fa-edit"></i> Данные правила могут изменяться без оповещения</li>
+                        <li><i class="fas fa-clock"></i> Срок хранения ЛЮБЫХ док-в - 3 дня</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <section id="about" class="section">
-      <h2>О сервере</h2>
-      <div class="grid two">
-        <p>
-          Наш RP сервер на базе Garry's Mod посвящён эпохе «Войны клонов». Мы делаем упор на
-          командное взаимодействие, реалистичные процедуры и лор Star Wars. Игроки проходят обучение,
-          вступают в подразделения и участвуют в операциях против сил Сепаратистов.
-        </p>
-        <ul class="feature-list">
-          <li><strong>Атмосфера:</strong> музыка, интерфейс и визуальный стиль в духе Star Wars</li>
-          <li><strong>RP-процедуры:</strong> приказы, рапорты, допуска, брифинги</li>
-          <li><strong>Карьерный рост:</strong> от рядового клона до офицера</li>
-          <li><strong>События:</strong> регулярные операции, тренировки, учения</li>
-        </ul>
-      </div>
+    <!-- Chapter 1 -->
+    <section id="chapter1" class="section chapter-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">ГЛАВА 1. ОБЩЕЕ ПОЛОЖЕНИЕ</h2>
+                <div class="section-divider"></div>
+            </div>
+            <div class="chapter-content">
+                <div class="rule-card">
+                    <div class="rule-number">1.1</div>
+                    <div class="rule-content">
+                        <h3>Некоммерческое объединение</h3>
+                        <p>Игровое сообщество "LIQUID" - некоммерческое объединение игроков, следственно, на сервере запрещена продажа любого вида игрового имущества или услуг за реальные деньги другим игрокам.</p>
+                    </div>
+                </div>
+                <div class="rule-card">
+                    <div class="rule-number">1.2</div>
+                    <div class="rule-content">
+                        <h3>Донат</h3>
+                        <p>"Донат" - добровольное пожертвование денежных средств на развитие проекта, вознаграждающее игровым имуществом или услугами. Ответственным за все финансовые операции является Основатель сервера.</p>
+                    </div>
+                </div>
+                <div class="rule-card">
+                    <div class="rule-number">1.3</div>
+                    <div class="rule-content">
+                        <h3>Запрещённая пропаганда</h3>
+                        <p>На сервере запрещена пропаганда фашизма, нацизма, травли по национальным, религиозным и иным признакам. Запрещено обсуждение конфликта "Россия - Украина".</p>
+                    </div>
+                </div>
+                <div class="rule-card">
+                    <div class="rule-number">1.4</div>
+                    <div class="rule-content">
+                        <h3>Применение правил</h3>
+                        <p>Данный свод правил распространяется на всех игроков проекта, с момента первого подключения к серверу или присоединению к Discord серверу.</p>
+                    </div>
+                </div>
+                <div class="rule-card">
+                    <div class="rule-number">1.5</div>
+                    <div class="rule-content">
+                        <h3>Официальные каналы</h3>
+                        <p>Официальные социальные сети или средства коммуникации проекта опубликованы в приложении 1, в конце документа.</p>
+                    </div>
+                </div>
+                <div class="rule-card">
+                    <div class="rule-number">1.6</div>
+                    <div class="rule-content">
+                        <h3>Иерархическая структура</h3>
+                        <div class="hierarchy">
+                            <div class="hierarchy-item">
+                                <i class="fas fa-crown"></i>
+                                <span>Основатель</span>
+                            </div>
+                            <div class="hierarchy-item">
+                                <i class="fas fa-users"></i>
+                                <span>Команда проекта</span>
+                            </div>
+                            <div class="hierarchy-item">
+                                <i class="fas fa-user-tie"></i>
+                                <span>Куратор</span>
+                            </div>
+                            <div class="hierarchy-item">
+                                <i class="fas fa-shield-alt"></i>
+                                <span>Главный Администратор</span>
+                            </div>
+                            <div class="hierarchy-item">
+                                <i class="fas fa-user-shield"></i>
+                                <span>Администратор</span>
+                            </div>
+                            <div class="hierarchy-item">
+                                <i class="fas fa-calendar-alt"></i>
+                                <span>Главный Ивентолог</span>
+                            </div>
+                            <div class="hierarchy-item">
+                                <i class="fas fa-calendar"></i>
+                                <span>Ивентолог</span>
+                            </div>
+                            <div class="hierarchy-item">
+                                <i class="fab fa-discord"></i>
+                                <span>Дискорд-Модератор</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="rule-card">
+                    <div class="rule-number">1.7</div>
+                    <div class="rule-content">
+                        <h3>Изменение правил</h3>
+                        <p>Гл. Администрация оставляет за собой право вносить изменения в настоящий свод правил без обязательного уведомления. Игрок обязан самостоятельно следить за актуальной версией правил.</p>
+                    </div>
+                </div>
+                <div class="rule-card">
+                    <div class="rule-number">1.8</div>
+                    <div class="rule-content">
+                        <h3>Сообщение об ошибках</h3>
+                        <p>Любые баги, ошибки и уязвимости должны быть немедленно сообщены Администрации через установленные каналы. Их использование в личных целях запрещено и карается бессрочной блокировкой.</p>
+                    </div>
+                </div>
+                <div class="rule-card">
+                    <div class="rule-number">1.9</div>
+                    <div class="rule-content">
+                        <h3>Ответственность за аккаунт</h3>
+                        <p>Аккаунт игрока является его личной ответственностью. Все действия, совершенные с аккаунта, считаются действиями его владельца. Передача аккаунта третьим лицам запрещена.</p>
+                    </div>
+                </div>
+                <div class="rule-card">
+                    <div class="rule-number">1.10</div>
+                    <div class="rule-content">
+                        <h3>Персональные данные</h3>
+                        <p>Запрещено распространение личной информации других игроков без их явного согласия.</p>
+                    </div>
+                </div>
+                <div class="rule-card">
+                    <div class="rule-number">1.11</div>
+                    <div class="rule-content">
+                        <h3>Порядок обжалования</h3>
+                        <p>Все действия Администрации фиксируются и являются окончательными. Обсуждение и обжалование наказаний производится только через установленные каналы апелляций.</p>
+                    </div>
+                </div>
+                <div class="rule-card">
+                    <div class="rule-number">1.12</div>
+                    <div class="rule-content">
+                        <h3>Согласие с правилами</h3>
+                        <p>Участие в проекте подразумевает безусловное согласие со всеми пунктами настоящих правил. Незнание правил не освобождает от ответственности.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <section class="section">
-      <h2>Разделы проекта</h2>
-      <div class="cards">
-        <a class="card" href="./news.html"><h3>Новости</h3><p class="muted">Анонсы и отчёты операций</p></a>
-        <a class="card" href="./charter.html"><h3>Устав</h3><p class="muted">Обязательные правила поведения</p></a>
-        <a class="card" href="./rules.html"><h3>Правила сервера</h3><p class="muted">Общие и RP-правила</p></a>
-        <a class="card" href="./hierarchy.html"><h3>Иерархия</h3><p class="muted">Звания и структура ВАР</p></a>
-        <a class="card" href="./creators.html"><h3>Создатели</h3><p class="muted">Команда проекта</p></a>
-        <a class="card" href="./admin.html"><h3>Админ-панель</h3><p class="muted">Управление новостями</p></a>
-      </div>
+    
+    <section id="chapter2" class="section chapter-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">ГЛАВА 2. ПОВЕДЕНИЕ ИГРОКОВ</h2>
+                <div class="section-divider"></div>
+            </div>
+            <div class="chapter-content">
+                <div class="rule-card">
+                    <div class="rule-number">2.1</div>
+                    <div class="rule-content">
+                        <h3>Отсутствие "NonRP"</h3>
+                        <p>На сервере отсутствует понятие "NonRP" - за действия, нарушающие атмосферу ролевой игры, использование информации из реального мира, иные отклонения от своей роли клона игроку будет присвоен статус "Дефект", иным ролям "Психически нездоров" после чего игроку будет закрыт доступ к полноценной игре на сервере (бан). Присвоение статуса "Дефект" возможно только согласно уставу.</p>
+                        <div class="penalty">
+                            <i class="fas fa-gavel"></i>
+                            <span>Наказание: по усмотрению Администрации (с учётом главы 5).</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="rule-card">
+                    <div class="rule-number">2.2</div>
+                    <div class="rule-content">
+                        <h3>Техническая безопасность</h3>
+                        <p>Запрещена любая попытка причинение вреда технической части сервера. Запрещено использование или хранение ПО, позволяющее получить преимущество над другими игроками. Сотрудник проекта, в лице Куратора, его заместителя и Выше, имеет право вызвать Вас на проверку, за отказ от которой последует игровая блокировка.</p>
+                        <div class="penalty">
+                            <i class="fas fa-ban"></i>
+                            <span>Наказание: бан по усмотрению Администрации, вплоть до перманентного.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="rule-card">
+                    <div class="rule-number">2.3</div>
+                    <div class="rule-content">
+                        <h3>Глобальные изменения</h3>
+                        <p>Для глобальных изменений внутри формирования или фракции необходимо одобрение РП Куратора, его заместителя и Выше.</p>
+                        <div class="penalty">
+                            <i class="fas fa-gavel"></i>
+                            <span>Наказание: по усмотрению Администрации.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="rule-card">
+                    <div class="rule-number">2.4</div>
+                    <div class="rule-content">
+                        <h3>Запрет токсичного поведения</h3>
+                        <p>Запрещены неуважение, токсичность, буллинг, троллинг и травля в любом виде по отношению к игрокам и администрации.</p>
+                        <div class="penalty">
+                            <i class="fas fa-gavel"></i>
+                            <span>Наказание: по усмотрению Администрации.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="rule-card">
+                    <div class="rule-number">2.5</div>
+                    <div class="rule-content">
+                        <h3>Эксплуатация недоработок</h3>
+                        <p>Запрещено использование недоработок игрового процесса, карты или механик для получения не предусмотренного правилами преимущества.</p>
+                        <div class="penalty">
+                            <i class="fas fa-ban"></i>
+                            <span>Наказание: бан по усмотрению Администрации.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="rule-card">
+                    <div class="rule-number">2.6</div>
+                    <div class="rule-content">
+                        <h3>Имена </h3>
+                        <p>Запрещены оскорбительные, несерьезные или вводящие в заблуждение имена не соответствующий сеттингу проекта.</p>
+                        <div class="penalty">
+                            <i class="fas fa-user-check"></i>
+                            <span>Наказание: требование смены имени, при отказе — бан до 1 дня.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="rule-card">
+                    <div class="rule-number">2.7</div>
+                    <div class="rule-content">
+                        <h3>Ненормативная лексика</h3>
+                        <p>Запрещено чрезмерное использование мата. В голосовом общении допускается в рамках роли и без оскорбления других игроков вне RP.</p>
+                        <div class="penalty">
+                            <i class="fas fa-comment-slash"></i>
+                            <span>Наказание: мут от 10 до 60 минут.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
-  </main>
 
-  <footer class="site-footer">
-    <p>© ВАР RP — Star Wars, Garry's Mod. Неофициальный фан‑проект.</p>
-  </footer>
-  <script src="./script.js" defer></script>
+    
+    <section id="chapter3" class="section chapter-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">ГЛАВА 3. ПРАВИЛА ДЛЯ СОТРУДНИКОВ ПРОЕКТА</h2>
+                <div class="section-divider"></div>
+            </div>
+            <div class="chapter-content">
+                <div class="subsection">
+                    <h3 class="subsection-title">Часть 1. Правила для состава Администрации</h3>
+                    <div class="rule-card">
+                        <div class="rule-number">3.1.1</div>
+                        <div class="rule-content">
+                            <h3>Запрет корыстного использования</h3>
+                            <p>Запрещено использование административных привилегий для корыстных целей.</p>
+                        </div>
+                    </div>
+                    <div class="rule-card">
+                        <div class="rule-number">3.1.2</div>
+                        <div class="rule-content">
+                            <h3>Запрет использования против старших</h3>
+                            <p>Запрещено использование административных привилегий по отношение к старшим по рангу сотруднику проекта.</p>
+                        </div>
+                    </div>
+                    <div class="rule-card">
+                        <div class="rule-number">3.1.3</div>
+                        <div class="rule-content">
+                            <h3>Ограничения на специальные режимы</h3>
+                            <p>Запрещено использование "noclip","cloak" при игроках или находясь в РП ситуации.</p>
+                        </div>
+                    </div>
+                    <div class="rule-card">
+                        <div class="rule-number">3.1.4</div>
+                        <div class="rule-content">
+                            <h3>Режим администратора</h3>
+                            <p>Осуществлении административной деятельности возможно только находясь в режиме администратора.</p>
+                        </div>
+                    </div>
+                    <div class="rule-card">
+                        <div class="rule-number">3.1.5</div>
+                        <div class="rule-content">
+                            <h3>Основная обязанность</h3>
+                            <p>Основной обязанностью Администратора является помощь игрокам.</p>
+                        </div>
+                    </div>
+                    <div class="rule-card">
+                        <div class="rule-number">3.1.6</div>
+                        <div class="rule-content">
+                            <h3>Полномочия Администратора</h3>
+                            <ul>
+                                <li>Принятие тикетов, помощь игрокам в решении вопросов</li>
+                                <li>Временное ограничение доступа к серверу игрокам, нарушающим пункты 1.3 и 2.2</li>
+                                <li>Использовать инструментарий Администратора для помощи игрокам в отыгрывании своей роли</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="subsection">
+                    <h3 class="subsection-title">Часть 2. Правила для состава Ивентологии</h3>
+                    <div class="rule-card">
+                        <div class="rule-number">3.2.1</div>
+                        <div class="rule-content">
+                            <h3>Запрет корыстного использования</h3>
+                            <p>Запрещено использование административных привилегий для корыстных целей.</p>
+                        </div>
+                    </div>
+                    <div class="rule-card">
+                        <div class="rule-number">3.2.2</div>
+                        <div class="rule-content">
+                            <h3>Запрет использования против старших</h3>
+                            <p>Запрещено использование административных привилегий по отношение к старшим по рангу сотруднику проекта.</p>
+                        </div>
+                    </div>
+                    <div class="rule-card">
+                        <div class="rule-number">3.2.3</div>
+                        <div class="rule-content">
+                            <h3>Ограничения на специальные режимы</h3>
+                            <p>Запрещено использование "noclip","cloak" при игроках или находясь в РП ситуации.</p>
+                        </div>
+                    </div>
+                    <div class="rule-card">
+                        <div class="rule-number">3.2.4</div>
+                        <div class="rule-content">
+                            <h3>Режим администратора</h3>
+                            <p>Проведение ивентовой деятельности возможно только находясь в режиме администратора.</p>
+                        </div>
+                    </div>
+                    <div class="rule-card">
+                        <div class="rule-number">3.2.5</div>
+                        <div class="rule-content">
+                            <h3>Основная обязанность</h3>
+                            <p>Основной обязанностью Ивентолога является организация игровых событий.</p>
+                        </div>
+                    </div>
+                    <div class="rule-card">
+                        <div class="rule-number">3.2.6</div>
+                        <div class="rule-content">
+                            <h3>Полномочия Ивентолога</h3>
+                            <ul>
+                                <li>Организация малых РП событий самостоятельно, при этом заняв время</li>
+                                <li>Организация глобальных РП событий при согласовании с Менеджером по ивентологии или его заместителя</li>
+                                <li>Временное ограничение доступа к серверу игрокам, нарушающим пункты 1.3 и 2.2</li>
+                                <li>Использовать инструментарий Администратора для помощи игрокам в отыгрывании своей роли</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chapter 4 -->
+    <section id="chapter4" class="section chapter-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">ГЛАВА 4. ПРАВИЛА ЧАТА</h2>
+                <div class="section-divider"></div>
+            </div>
+            <div class="chapter-content">
+                <div class="rule-card">
+                    <div class="rule-number">4.1</div>
+                    <div class="rule-content">
+                        <h3>Запрет оскорблений</h3>
+                        <p>Запрещено оскорбление других личностей.</p>
+                        <div class="penalty">
+                            <i class="fas fa-comment-slash"></i>
+                            <span>Мут от 10 до 60 минут.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="rule-card">
+                    <div class="rule-number">4.2</div>
+                    <div class="rule-content">
+                        <h3>Конструктивная критика</h3>
+                        <p>Принимается только конструктивная критика.</p>
+                        <div class="penalty">
+                            <i class="fas fa-comment-slash"></i>
+                            <span>Мут от 10 до 60 минут.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="rule-card">
+                    <div class="rule-number">4.3</div>
+                    <div class="rule-content">
+                        <h3>Запрет политических обсуждений</h3>
+                        <p>Запрещено обсуждение политики, выражения, унижающие человеческое достоинство, дискриминирующие или разжигающие межнациональную рознь.</p>
+                        <div class="penalty">
+                            <i class="fas fa-comment-slash"></i>
+                            <span>Мут от 10 до 60 минут.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="rule-card">
+                    <div class="rule-number">4.4</div>
+                    <div class="rule-content">
+                        <h3>Запрет домогательств</h3>
+                        <p>Запрещено сексуальное домогательство в любой форме.</p>
+                        <div class="penalty">
+                            <i class="fas fa-ban"></i>
+                            <span>Бан от 1 до 3 дней.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="rule-card">
+                    <div class="rule-number">4.5</div>
+                    <div class="rule-content">
+                        <h3>Запрет рекламы</h3>
+                        <p>Запрещено рекламировать различные сообщества и сервера.</p>
+                        <div class="penalty">
+                            <i class="fas fa-ban"></i>
+                            <span>Бан и ЧС проекта.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="rule-card">
+                    <div class="rule-number">4.6</div>
+                    <div class="rule-content">
+                        <h3>Запрет флуда/спама</h3>
+                        <p>Запрещен флуд/спам, капс. Флудом считается 3 и более одинаковых сообщения.</p>
+                        <div class="penalty">
+                            <i class="fas fa-comment-slash"></i>
+                            <span>Мут от 10 до 60 минут.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="rule-card">
+                    <div class="rule-number">4.7</div>
+                    <div class="rule-content">
+                        <h3>Запрет музыки в микрофон</h3>
+                        <p>Запрещено использовать различные приборы/программы, дабы включить музыку в микрофон, так-же не стоит издавать громкие шумы и пищание в МИКРОФОН. (Искл: Бар)</p>
+                        <div class="penalty">
+                            <i class="fas fa-comment-slash"></i>
+                            <span>Мут от 10 до 60 минут.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="rule-card">
+                    <div class="rule-number">4.8</div>
+                    <div class="rule-content">
+                        <h3>Запрет транслита</h3>
+                        <p>Запрещено писать транслитом, (Пример: privet)</p>
+                        <div class="penalty">
+                            <i class="fas fa-comment-slash"></i>
+                            <span>Мут от 10 до 60 минут.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="rule-card">
+                    <div class="rule-number">4.9</div>
+                    <div class="rule-content">
+                        <h3>Запрет угроз</h3>
+                        <p>Запрещаются угрозы игрокам, не относящиеся к игровому процессу.</p>
+                        <div class="penalty">
+                            <i class="fas fa-comment-slash"></i>
+                            <span>Мут от 10 до 60 минут, повторно — бан 1–3 дня.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="rule-card">
+                    <div class="rule-number">4.10</div>
+                    <div class="rule-content">
+                        <h3>Оскорбления родственников</h3>
+                        <p>Запрещены любые оскорбления игроков или упоминания их родственников в отрицательном контексте в NonRP. Наказание: Мут 10–60 мин, повторно — бан 1–3 дня.</p>
+                    </div>
+                </div>
+                <div class="rule-card">
+                    <div class="rule-number">4.11</div>
+                    <div class="rule-content">
+                        <h3>Распространение фейков</h3>
+                        <p>Запрещено распространение ложной информации от имени Администрации или провоцирование паники. Наказание: Мут 60 мин — 1 день.</p>
+                    </div>
+                </div>
+                <div class="rule-card">
+                    <div class="rule-number">4.12</div>
+                    <div class="rule-content">
+                        <h3>Публичное обсуждение модерации</h3>
+                        <p>Запрещено публично обсуждать действия модерации. Жалобы и апелляции — только через установленные каналы. Наказание: Мут от 30 мин, повторно — бан 1 день.</p>
+                    </div>
+                </div>
+                <div class="rule-card">
+                    <div class="rule-number">4.13</div>
+                    <div class="rule-content">
+                        <h3>Преднамеренное введение в заблуждение</h3>
+                        <p>Запрещено злонамеренно вводить игроков в заблуждение по игровым механикам и правилам (если это не часть RP). Наказание: Мут от 60 мин.</p>
+                    </div>
+                </div>
+                <div class="rule-card">
+                    <div class="rule-number">4.14</div>
+                    <div class="rule-content">
+                        <h3>Ники</h3>
+                        <p>Запрещены ники с оскорблениями, рекламой, упоминанием других проектов, а также совпадающие с никами Администрации. Наказание: Требование смены ника, отказ — бан до смены.</p>
+                    </div>
+                </div>
+                <div class="rule-card">
+                    <div class="rule-number">4.15</div>
+                    <div class="rule-content">
+                        <h3>Публикация ссылок</h3>
+                        <p>Запрещено публиковать ссылки, не относящиеся к проекту, без согласования. Разрешены только официальные ресурсы. Наказание: Мут 60 мин, повторно — бан 1 день.</p>
+                    </div>
+                </div>
+                <div class="rule-card">
+                    <div class="rule-number">4.16</div>
+                    <div class="rule-content">
+                        <h3>Шумы в голосовом чате</h3>
+                        <p>Запрещено чрезмерное использование посторонних звуков без Push-to-Talk. Наказание: предупреждение, затем мут от 10 мин.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chapter 5 -->
+    <section id="chapter5" class="section chapter-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">ГЛАВА 5. ОСНОВНЫЕ ПРАВИЛА RolePlay</h2>
+                <div class="section-divider"></div>
+            </div>
+            <div class="chapter-content">
+                <div class="rule-card penalty-card">
+                    <div class="rule-number">5.1</div>
+                    <div class="rule-content">
+                        <h3>RDM - Умышленное убийство</h3>
+                        <p>Умышленное убийство игроков без видимой причины</p>
+                        <div class="penalty">
+                            <i class="fas fa-ban"></i>
+                            <span>Бан от 6 часов (до 2-х игроков) до 14 дней (3 и более игроков)</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="rule-card penalty-card">
+                    <div class="rule-number">5.2</div>
+                    <div class="rule-content">
+                        <h3>FearRP - Боязнь смерти</h3>
+                        <p>Боязнь смерти или отсутствие ее в рамках персонажа</p>
+                        <div class="penalty">
+                            <i class="fas fa-ban"></i>
+                            <span>Бан от 3 часов до 12 часов</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="rule-card penalty-card">
+                    <div class="rule-number">5.3</div>
+                    <div class="rule-content">
+                        <h3>"NonRP" - Неправильная отыгровка</h3>
+                        <p>Не правильная отыгровка персонажа или помеха отыгровки другим</p>
+                        <div class="penalty">
+                            <i class="fas fa-user-times"></i>
+                            <span>Бан от 3 часов до 4 дней</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="rule-card penalty-card">
+                    <div class="rule-number">5.4</div>
+                    <div class="rule-content">
+                        <h3>FreeKill - Умышленное убийство</h3>
+                        <p>Умышленное убийство игрока без причины</p>
+                        <div class="penalty">
+                            <i class="fas fa-ban"></i>
+                            <span>Бан от 1 часа до 6 часов</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="rule-card penalty-card">
+                    <div class="rule-number">5.5</div>
+                    <div class="rule-content">
+                        <h3>Free Stun - Оглушение без причины</h3>
+                        <p>Запрещено использовать оглушающий режим без причины</p>
+                        <div class="penalty">
+                            <i class="fas fa-ban"></i>
+                            <span>Бан от 30 минут до 2 часов</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="rule-card penalty-card">
+                    <div class="rule-number">5.6</div>
+                    <div class="rule-content">
+                        <h3>Spawn Kill - Убийство на месте возрождения</h3>
+                        <p>Убийство игрока на месте его возрождения или появления по умолчанию</p>
+                        <div class="penalty">
+                            <i class="fas fa-ban"></i>
+                            <span>Бан от 3 часов до 24 часа</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="rule-card penalty-card">
+                    <div class="rule-number">5.7</div>
+                    <div class="rule-content">
+                        <h3>Обман Администрации</h3>
+                        <p>Введение администратора в заблуждение</p>
+                        <div class="penalty">
+                            <i class="fas fa-ban"></i>
+                            <span>Бан от 1 дня до 3 месяцев</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="rule-card penalty-card">
+                    <div class="rule-number">5.8</div>
+                    <div class="rule-content">
+                        <h3>PG (Powergaming)</h3>
+                        <p>Нереалистичное поведение персонажа, преувеличение его игровых возможностей или отсутствие боязни за его жизнь</p>
+                        <div class="penalty">
+                            <i class="fas fa-ban"></i>
+                            <span>Бан от 1 часа до 3-ёх дней</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="rule-card penalty-card">
+                    <div class="rule-number">5.9</div>
+                    <div class="rule-content">
+                        <h3>MG - Использование OOC информации</h3>
+                        <p>Использование OOC информации при отыгровке роли в IC, злоупотребление информацией, полученной неролевым способом</p>
+                        <div class="penalty">
+                            <i class="fas fa-ban"></i>
+                            <span>Бан от 4 часов до 7 дней</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="rule-card penalty-card">
+                    <div class="rule-number">5.10</div>
+                    <div class="rule-content">
+                        <h3>NLR - Правило новой жизни</h3>
+                        <p>После смерти Вы должны забыть своего убийцу и все обстоятельства смерти. Абсолютно всё, кроме дома, друзей и Ваших обязанностей. Возвращаться на место смерти можно через 3 минуты после смерти.</p>
+                        <div class="penalty">
+                            <i class="fas fa-ban"></i>
+                            <span>Бан от 3 часов до 8 часов</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="rule-card penalty-card">
+                    <div class="rule-number">5.11</div>
+                    <div class="rule-content">
+                        <h3>Relapse - Рецидив</h3>
+                        <p>Совокупность нарушенных правил, которое начинается от 3-х и может накапливать в себя куда больше</p>
+                        <div class="penalty">
+                            <i class="fas fa-ban"></i>
+                            <span>Бан от 14 дней до пермача</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="rule-card penalty-card">
+                    <div class="rule-number">5.12</div>
+                    <div class="rule-content">
+                        <h3>Job Abuse</h3>
+                        <p>Смена профессии для личной выгоды.</p>
+                        <div class="penalty">
+                            <i class="fas fa-ban"></i>
+                            <span>Бан до 2 часов</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="rule-card penalty-card">
+                    <div class="rule-number">5.13</div>
+                    <div class="rule-content">
+                        <h3>Leave RP</h3>
+                        <p>Уход от RP процесса путем выхода из игры или игнорирование RolePlay процесса.</p>
+                        <div class="penalty">
+                            <i class="fas fa-ban"></i>
+                            <span>Бан до 2 часов</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="rule-card penalty-card">
+                    <div class="rule-number">5.14</div>
+                    <div class="rule-content">
+                        <h3>NonRP Nickname</h3>
+                        <p>Имя игрового персонажа, не соответствующее его роли.</p>
+                        <div class="penalty">
+                            <i class="fas fa-user-check"></i>
+                            <span>Предупреждение, далее — бан 1 час</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="rule-card penalty-card">
+                    <div class="rule-number">5.15</div>
+                    <div class="rule-content">
+                        <h3>Combat Logging / Logging</h3>
+                        <p>Запрещено выходить из игры во время или непосредственно после ролевой ситуации с целью избежать последствий.</p>
+                        <div class="penalty">
+                            <i class="fas fa-ban"></i>
+                            <span>Бан от 6 часов до 3 дней</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="rule-card penalty-card">
+                    <div class="rule-number">5.16</div>
+                    <div class="rule-content">
+                        <h3>MixRP (Смешение РП)</h3>
+                        <p>Запрещено смешивать IC и OOC мотивы. Действия должны быть обоснованы внутриигровыми знаниями и ролью.</p>
+                        <div class="penalty">
+                            <i class="fas fa-ban"></i>
+                            <span>Бан от 3 часов до 1 дня</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="rule-card penalty-card">
+                    <div class="rule-number">5.17</div>
+                    <div class="rule-content">
+                        <h3>Offensive Language RP</h3>
+                        <p>Запрещено чрезмерное и необоснованное использование оскорблений в RP.</p>
+                        <div class="penalty">
+                            <i class="fas fa-microphone-slash"></i>
+                            <span>Мут в голосовом чате от 1 до 6 часов</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-text">
+                    <p>ДОКУМЕНТ БУДЕМ ДОДЕЛЫВАТЬ - ПРЕДЛАГАЙТЕ СВОИ ИДЕИ В СИСТЕМУ ОБРАЩЕНИЙ!</p>
+                </div>
+                <div class="footer-links">
+                    <a href="https://discord.gg/zjf9utAgzd " class="footer-link">
+                        <i class="fab fa-discord"></i>
+                        Discord
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <div class="role-modal" id="roleModal">
+        <div class="modal-overlay" id="modalOverlay"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="modalTitle"></h2>
+                <button class="modal-close" id="modalClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body" id="modalBody">
+            </div>
+        </div>
+    </div>
+
+    <!-- Back to top button -->
+    <button class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="script.js?v=5"></script>
 </body>
 </html>
-
-
