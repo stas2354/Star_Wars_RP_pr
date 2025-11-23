@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Star Wars GMod - Формирования ВАР</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Фон со звездами -->
+    <div class="stars" id="stars"></div>
+
+    <!-- Шапка -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="charter.html" class="back-button">← Назад</a>
+                <div class="logo-icon">⚔️</div>
+                <div class="logo-text">ФОРМИРОВАНИЯ ВАР</div>
+            </div>
+            <div class="server-info">
+                <div class="server-ip">IP: 185.97.255.43:27527</div>
+                <div class="players-online">
+                    <span class="online-dot"></span>
+                    Онлайн: <span id="online-count">47</span>/100
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Основной контент -->
+    <main class="main-content">
+        <div class="container">
+            <div class="content-header">
+                <h1>Формирования Великой Армии Республики</h1>
+                <p>Структура и организация подразделений ВАР</p>
+            </div>
+
+            <!-- Навигация по формированиям -->
+            <nav class="formations-nav">
+                <a href="fleet.html" class="formation-card">
+                    <div class="formation-icon">🚀</div>
+                    <h3>Республиканский Флот</h3>
+                    <p>9-й Охранный Флот - космические силы Республики</p>
+                    <span class="formation-status active">Активно</span>
+                </a>
+                
+                <a href="#" class="formation-card coming-soon">
+                    <div class="formation-icon">🛡️</div>
+                    <h3>Гвардия</h3>
+                    <p>Элитные охранные подразделения</p>
+                    <span class="formation-status">Скоро</span>
+                </a>
+                
+                <a href="#" class="formation-card coming-soon">
+                    <div class="formation-icon">⚡</div>
+                    <h3>СТ Легион</h3>
+                    <p>Ударные подразделения специального назначения</p>
+                    <span class="formation-status">Скоро</span>
+                </a>
+                
+                <a href="#" class="formation-card coming-soon">
+                    <div class="formation-icon">🎯</div>
+                    <h3>91 Легион</h3>
+                    <p>Разведывательные и диверсионные операции</p>
+                    <span class="formation-status">Скоро</span>
+                </a>
+            </nav>
+        </div>
+    </main>
+
+    <!-- Подвал -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>Great Army of the Republic © 2023 | Формирования ВАР</p>
+                <p>Этот сервер не аффилирован с Lucasfilm Ltd. или Disney</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

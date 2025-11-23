@@ -1,0 +1,2048 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #0c0c2a, #1a1a3a);
+    color: #e0e0e0;
+    min-height: 100vh;
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+.stars {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.star {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Шапка */
+header {
+    background: rgba(15, 20, 40, 0.95);
+    border-bottom: 1px solid #2a4a7a;
+    padding: 15px 0;
+    backdrop-filter: blur(10px);
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-icon {
+    font-size: 2rem;
+    color: #4bd5ee;
+}
+
+.logo-text {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #4bd5ee;
+    letter-spacing: 1px;
+}
+
+.server-info {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.server-ip {
+    background: rgba(43, 52, 103, 0.6);
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-family: monospace;
+    border: 1px solid #3a5a8a;
+    font-size: 0.9rem;
+}
+
+.players-online {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(43, 52, 103, 0.6);
+    padding: 6px 12px;
+    border-radius: 4px;
+    border: 1px solid #3a5a8a;
+    font-size: 0.9rem;
+}
+
+.online-dot {
+    width: 8px;
+    height: 8px;
+    background: #4bd5ee;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+/* Основной контент */
+.main-content {
+    padding: 30px 0;
+}
+
+.content-header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 20px;
+    background: rgba(20, 25, 50, 0.6);
+    border-radius: 8px;
+    border: 1px solid #2a4a7a;
+}
+
+.content-header h1 {
+    font-size: 2.4rem;
+    color: #4bd5ee;
+    margin-bottom: 10px;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+.content-header p {
+    font-size: 1.1rem;
+    color: #b0b0b0;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Навигация по уставу */
+.charter-nav {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-bottom: 40px;
+}
+
+.nav-item {
+    position: relative;
+}
+
+.nav-title {
+    display: block;
+    background: rgba(25, 30, 60, 0.8);
+    padding: 16px;
+    border-radius: 6px;
+    text-decoration: none;
+    color: #e0e0e0;
+    font-size: 1rem;
+    text-align: center;
+    border: 1px solid #3a5a8a;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.nav-item:first-child .nav-title {
+    cursor: default;
+}
+
+.nav-title:hover {
+    border-color: #4bd5ee;
+    background: rgba(25, 30, 70, 0.9);
+    transform: translateY(-2px);
+}
+
+/* Выпадающее меню устава */
+.charter-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(20, 25, 50, 0.98);
+    border: 1px solid #3a5a8a;
+    border-radius: 0 0 6px 6px;
+    padding: 8px 0;
+    display: none;
+    z-index: 100;
+    backdrop-filter: blur(10px);
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.charter-menu.show {
+    display: block;
+}
+
+.menu-item {
+    display: block;
+    padding: 10px 16px;
+    color: #c0c0c0;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border-left: 3px solid transparent;
+    font-size: 0.9rem;
+}
+
+.menu-item:hover {
+    background: rgba(75, 213, 238, 0.1);
+    color: #4bd5ee;
+    border-left-color: #4bd5ee;
+}
+
+/* Содержание устава */
+.charter-section {
+    background: rgba(20, 25, 50, 0.6);
+    border: 1px solid #2a4a7a;
+    border-radius: 8px;
+    padding: 25px;
+    margin-bottom: 25px;
+    scroll-margin-top: 20px;
+}
+
+.charter-section h2 {
+    color: #4bd5ee;
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #2a4a7a;
+    font-weight: 400;
+}
+
+/* Вводный текст */
+.intro-text {
+    margin-bottom: 20px;
+    padding: 15px;
+    background: rgba(30, 35, 70, 0.4);
+    border-radius: 6px;
+    border-left: 3px solid #4bd5ee;
+}
+
+/* Сетка правил */
+.rules-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.rule-card {
+    background: rgba(30, 35, 70, 0.6);
+    padding: 20px;
+    border-radius: 6px;
+    border-left: 4px solid #4bd5ee;
+}
+
+.rule-icon {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.rule-card h3 {
+    color: #4bd5ee;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.rule-card p {
+    color: #c0c0c0;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+}
+
+/* Исключения */
+.exception {
+    background: rgba(255, 193, 7, 0.1);
+    border: 1px solid #ffc107;
+    border-radius: 4px;
+    padding: 10px;
+    margin-top: 10px;
+    font-size: 0.9rem;
+}
+
+.exception strong {
+    color: #ffc107;
+}
+
+.exception ul {
+    margin: 8px 0 0 20px;
+}
+
+.exception li {
+    margin-bottom: 5px;
+}
+
+/* Степени нарушений */
+.violation-levels {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.violation-card {
+    padding: 25px;
+    border-radius: 8px;
+    border-left: 5px solid;
+}
+
+.violation-card.light {
+    border-left-color: #28a745;
+    background: rgba(40, 167, 69, 0.1);
+}
+
+.violation-card.medium {
+    border-left-color: #ffc107;
+    background: rgba(255, 193, 7, 0.1);
+}
+
+.violation-card.heavy {
+    border-left-color: #dc3545;
+    background: rgba(220, 53, 69, 0.1);
+}
+
+.violation-card h3 {
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+    color: inherit;
+}
+
+.punishment {
+    margin-top: 15px;
+    padding: 12px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 6px;
+    font-size: 0.9rem;
+}
+
+.punishment strong {
+    color: inherit;
+}
+
+/* Воинский лексикон */
+.lexicon-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 12px;
+    margin: 20px 0;
+}
+
+.lexicon-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    background: rgba(30, 35, 70, 0.6);
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.lexicon-item:hover {
+    background: rgba(75, 213, 238, 0.1);
+}
+
+.civilian {
+    color: #ff6b6b;
+    font-weight: bold;
+}
+
+.military {
+    color: #4bd5ee;
+    font-weight: bold;
+}
+
+/* Правила поведения */
+.rules-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.behavior-rule {
+    display: flex;
+    gap: 15px;
+    padding: 15px;
+    background: rgba(30, 35, 70, 0.6);
+    border-radius: 6px;
+    border-left: 3px solid #4bd5ee;
+    align-items: flex-start;
+}
+
+.rule-number {
+    background: #4bd5ee;
+    color: #0c0c2a;
+    padding: 6px 10px;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 0.8rem;
+    min-width: 45px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.behavior-rule > div {
+    flex: 1;
+}
+
+.behavior-rule p {
+    margin-bottom: 10px;
+}
+
+/* Определения */
+.definition-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.definition-card {
+    background: rgba(30, 35, 70, 0.6);
+    padding: 20px;
+    border-radius: 6px;
+    border: 1px solid #3a5a8a;
+}
+
+.definition-card h3 {
+    color: #4bd5ee;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.definition-card p {
+    color: #c0c0c0;
+    font-size: 0.9rem;
+}
+
+/* Блоки примечаний */
+.note-box {
+    background: rgba(75, 213, 238, 0.1);
+    border: 1px solid #4bd5ee;
+    border-radius: 6px;
+    padding: 15px;
+    margin: 20px 0;
+    font-size: 0.9rem;
+}
+
+.note-box strong {
+    color: #4bd5ee;
+}
+
+/* Общие блоки контента */
+.content-block {
+    line-height: 1.7;
+}
+
+.content-block h3 {
+    color: #4bd5ee;
+    margin: 20px 0 10px;
+    font-size: 1.2rem;
+}
+
+.content-block ul {
+    margin: 15px 0;
+    padding-left: 25px;
+}
+
+.content-block li {
+    margin-bottom: 8px;
+    color: #c0c0c0;
+}
+
+.content-block ul ul {
+    margin: 8px 0;
+}
+
+/* Заглушка для остального контента */
+.section-placeholder {
+    text-align: center;
+    padding: 40px;
+    background: rgba(20, 25, 50, 0.6);
+    border-radius: 8px;
+    border: 1px solid #2a4a7a;
+    margin-top: 30px;
+}
+
+.section-placeholder h3 {
+    color: #4bd5ee;
+    margin-bottom: 15px;
+}
+
+.join-server-btn {
+    background: linear-gradient(135deg, #4bd5ee, #3a5a8a);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 15px;
+}
+
+.join-server-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(75, 213, 238, 0.3);
+}
+
+/* Подвал */
+.footer {
+    background: rgba(10, 15, 30, 0.9);
+    border-top: 1px solid #2a4a7a;
+    padding: 25px 0;
+    margin-top: 40px;
+}
+
+.footer-content {
+    text-align: center;
+    color: #8a9ba8;
+}
+
+.footer-content p {
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    header .container {
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    .charter-nav {
+        grid-template-columns: 1fr;
+    }
+    
+    .content-header h1 {
+        font-size: 1.8rem;
+    }
+    
+    .rules-grid,
+    .violation-levels,
+    .definition-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .lexicon-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .server-info {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .behavior-rule {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .rule-number {
+        align-self: flex-start;
+    }
+}
+
+/* Стили для скроллбара */
+.charter-menu::-webkit-scrollbar {
+    width: 6px;
+}
+
+.charter-menu::-webkit-scrollbar-track {
+    background: rgba(20, 25, 50, 0.8);
+}
+
+.charter-menu::-webkit-scrollbar-thumb {
+    background: #4bd5ee;
+    border-radius: 3px;
+}
+
+.charter-menu::-webkit-scrollbar-thumb:hover {
+    background: #3a5a8a;
+}
+
+/* Анимации */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.charter-section {
+    animation: fadeIn 0.5s ease-out;
+}
+/* Коды состояния */
+.codes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.code-item {
+    padding: 25px;
+    border-radius: 8px;
+    border-left: 5px solid;
+}
+
+.code-item.green {
+    border-left-color: #28a745;
+    background: rgba(40, 167, 69, 0.1);
+}
+
+.code-item.yellow {
+    border-left-color: #ffc107;
+    background: rgba(255, 193, 7, 0.1);
+}
+
+.code-item.red {
+    border-left-color: #dc3545;
+    background: rgba(220, 53, 69, 0.1);
+}
+
+.code-item.black {
+    border-left-color: #343a40;
+    background: rgba(52, 58, 64, 0.1);
+    color: #e0e0e0;
+}
+
+.code-item h3 {
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+}
+
+/* Примеры уведомлений */
+.notification-examples {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.notification-example {
+    background: rgba(30, 35, 70, 0.8);
+    padding: 15px;
+    border-radius: 6px;
+    border: 1px solid #3a5a8a;
+    font-family: monospace;
+    color: #4bd5ee;
+}
+
+/* Ограниченные территории */
+.restricted-areas {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.area-card {
+    background: rgba(30, 35, 70, 0.6);
+    padding: 20px;
+    border-radius: 6px;
+    border: 1px solid #3a5a8a;
+}
+
+.area-card h4 {
+    color: #4bd5ee;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+.area-card h5 {
+    color: #4bd5ee;
+    margin: 15px 0 10px;
+    font-size: 1.1rem;
+}
+
+/* Уровни доступа */
+.access-levels {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.access-level {
+    background: rgba(30, 35, 70, 0.6);
+    padding: 20px;
+    border-radius: 6px;
+    border: 1px solid #3a5a8a;
+}
+
+.access-level h4 {
+    color: #4bd5ee;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+.access-holders {
+    margin-top: 10px;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+/* Формирования */
+.formations-nav {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.formation-card {
+    background: rgba(25, 30, 60, 0.8);
+    padding: 25px;
+    border-radius: 8px;
+    border: 1px solid #3a5a8a;
+    text-decoration: none;
+    color: #e0e0e0;
+    transition: all 0.3s ease;
+    position: relative;
+    display: block;
+}
+
+.formation-card:hover {
+    border-color: #4bd5ee;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(75, 213, 238, 0.2);
+}
+
+.formation-card.coming-soon {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.formation-card.coming-soon:hover {
+    transform: none;
+    border-color: #3a5a8a;
+    box-shadow: none;
+}
+
+.formation-icon {
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+
+.formation-card h3 {
+    color: #4bd5ee;
+    margin-bottom: 10px;
+    font-size: 1.3rem;
+}
+
+.formation-card p {
+    color: #b0b0b0;
+    margin-bottom: 15px;
+    line-height: 1.5;
+}
+
+.formation-status {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    padding: 5px 10px;
+    background: rgba(40, 167, 69, 0.2);
+    border: 1px solid #28a745;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    color: #28a745;
+}
+
+.formation-status.active {
+    background: rgba(40, 167, 69, 0.2);
+    border-color: #28a745;
+    color: #28a745;
+}
+
+/* Флот */
+.back-button {
+    color: #4bd5ee;
+    text-decoration: none;
+    margin-right: 15px;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+}
+
+.back-button:hover {
+    color: #3a5a8a;
+}
+
+.fleet-nav {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.nav-btn {
+    padding: 10px 20px;
+    background: rgba(30, 35, 70, 0.6);
+    border: 1px solid #3a5a8a;
+    border-radius: 6px;
+    color: #e0e0e0;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.nav-btn:hover {
+    background: rgba(75, 213, 238, 0.1);
+    border-color: #4bd5ee;
+}
+
+/* Секции флота */
+.fleet-section {
+    background: rgba(20, 25, 50, 0.6);
+    border: 1px solid #2a4a7a;
+    border-radius: 8px;
+    padding: 25px;
+    margin-bottom: 25px;
+    scroll-margin-top: 20px;
+}
+
+.fleet-section h2 {
+    color: #4bd5ee;
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #2a4a7a;
+}
+
+.fleet-intro {
+    line-height: 1.7;
+}
+
+.fleet-highlight {
+    background: rgba(75, 213, 238, 0.1);
+    border: 1px solid #4bd5ee;
+    border-radius: 6px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.fleet-highlight h3 {
+    color: #4bd5ee;
+    margin-bottom: 10px;
+}
+
+/* Система званий флота */
+.rank-categories {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.rank-category {
+    background: rgba(30, 35, 70, 0.4);
+    border-radius: 8px;
+    padding: 20px;
+    border: 1px solid #3a5a8a;
+}
+
+.rank-category h3 {
+    color: #4bd5ee;
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+}
+
+.ranks-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 10px;
+}
+
+.rank-item {
+    display: flex;
+    flex-direction: column;
+    padding: 12px;
+    background: rgba(40, 45, 80, 0.6);
+    border-radius: 6px;
+    border-left: 3px solid #4bd5ee;
+}
+
+.rank-code {
+    color: #4bd5ee;
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+}
+
+.rank-name {
+    color: #e0e0e0;
+    font-weight: 500;
+}
+
+.rank-desc {
+    color: #b0b0b0;
+    font-size: 0.9rem;
+    font-style: italic;
+    margin-top: 5px;
+}
+
+/* Регламент перевода */
+.transfer-rules {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.transfer-category {
+    background: rgba(30, 35, 70, 0.4);
+    border-radius: 8px;
+    padding: 20px;
+    border: 1px solid #3a5a8a;
+}
+
+.transfer-category h3 {
+    color: #4bd5ee;
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+}
+
+.transfer-category ul {
+    margin-left: 20px;
+}
+
+.transfer-category li {
+    margin-bottom: 8px;
+    color: #e0e0e0;
+    line-height: 1.5;
+}
+
+/* Подразделения */
+.subdivisions-list {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.subdivision-card {
+    background: rgba(30, 35, 70, 0.6);
+    border-radius: 8px;
+    padding: 25px;
+    border: 1px solid #3a5a8a;
+}
+
+.subdivision-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.subdivision-header h3 {
+    color: #4bd5ee;
+    font-size: 1.3rem;
+    margin: 0;
+}
+
+.subdivision-type {
+    background: rgba(75, 213, 238, 0.2);
+    color: #4bd5ee;
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    border: 1px solid #4bd5ee;
+}
+
+.powers-duties {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin: 20px 0;
+}
+
+@media (min-width: 768px) {
+    .powers-duties {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.powers, .duties {
+    background: rgba(40, 45, 80, 0.4);
+    border-radius: 6px;
+    padding: 15px;
+}
+
+.powers h4, .duties h4 {
+    color: #4bd5ee;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.powers ul, .duties ul {
+    margin-left: 20px;
+}
+
+.powers li, .duties li {
+    margin-bottom: 8px;
+    color: #e0e0e0;
+    line-height: 1.5;
+    font-size: 0.9rem;
+}
+
+.vip-targets {
+    background: rgba(255, 193, 7, 0.1);
+    border: 1px solid #ffc107;
+    border-radius: 6px;
+    padding: 15px;
+    margin-top: 15px;
+}
+
+.vip-targets h4 {
+    color: #ffc107;
+    margin-bottom: 10px;
+}
+
+.vip-targets ol {
+    margin-left: 20px;
+}
+
+.vip-targets li {
+    margin-bottom: 5px;
+    color: #e0e0e0;
+}
+/* Орден Джедаев */
+.order-nav {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.order-section {
+    background: rgba(20, 25, 50, 0.6);
+    border: 1px solid #2a4a7a;
+    border-radius: 8px;
+    padding: 25px;
+    margin-bottom: 25px;
+    scroll-margin-top: 20px;
+}
+
+.order-section h2 {
+    color: #4bd5ee;
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #2a4a7a;
+}
+
+.order-intro {
+    line-height: 1.7;
+    font-size: 1.1rem;
+}
+
+.order-highlight {
+    background: rgba(75, 213, 238, 0.1);
+    border: 1px solid #4bd5ee;
+    border-radius: 6px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+/* Иерархия джедаев */
+.hierarchy-levels {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.hierarchy-card {
+    background: rgba(30, 35, 70, 0.6);
+    border-radius: 8px;
+    padding: 25px;
+    border: 1px solid #3a5a8a;
+    position: relative;
+}
+
+.hierarchy-card.grand-master {
+    border-left: 5px solid #ffd700;
+    background: rgba(255, 215, 0, 0.05);
+}
+
+.hierarchy-card.master {
+    border-left: 5px solid #4bd5ee;
+    background: rgba(75, 213, 238, 0.05);
+}
+
+.hierarchy-card.knight {
+    border-left: 5px solid #28a745;
+    background: rgba(40, 167, 69, 0.05);
+}
+
+.hierarchy-card.padawan {
+    border-left: 5px solid #ffc107;
+    background: rgba(255, 193, 7, 0.05);
+}
+
+.hierarchy-card.youngling {
+    border-left: 5px solid #6f42c1;
+    background: rgba(111, 66, 193, 0.05);
+}
+
+.hierarchy-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.hierarchy-header h3 {
+    color: #4bd5ee;
+    font-size: 1.3rem;
+    margin: 0;
+}
+
+.hierarchy-badge {
+    background: rgba(75, 213, 238, 0.2);
+    color: #4bd5ee;
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    border: 1px solid #4bd5ee;
+}
+
+.hierarchy-details {
+    background: rgba(40, 45, 80, 0.4);
+    border-radius: 6px;
+    padding: 15px;
+    margin: 15px 0;
+}
+
+.hierarchy-details h4 {
+    color: #4bd5ee;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.hierarchy-details ul {
+    margin-left: 20px;
+}
+
+.hierarchy-details li {
+    margin-bottom: 8px;
+    color: #e0e0e0;
+    line-height: 1.5;
+}
+
+.hierarchy-note {
+    background: rgba(255, 193, 7, 0.1);
+    border: 1px solid #ffc107;
+    border-radius: 6px;
+    padding: 12px;
+    margin-top: 15px;
+}
+
+.hierarchy-note strong {
+    color: #ffc107;
+}
+
+/* Звания джедаев */
+.jedi-ranks {
+    margin: 20px 0;
+}
+
+.jedi-rank {
+    border-left: 4px solid #6f42c1 !important;
+    background: rgba(111, 66, 193, 0.1) !important;
+}
+
+/* Полномочия джедаев */
+.powers-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.power-card {
+    display: flex;
+    gap: 20px;
+    background: rgba(30, 35, 70, 0.6);
+    border-radius: 8px;
+    padding: 25px;
+    border: 1px solid #3a5a8a;
+    align-items: flex-start;
+}
+
+.power-card.important {
+    border-left: 5px solid #ffc107;
+    background: rgba(255, 193, 7, 0.05);
+}
+
+.power-icon {
+    font-size: 2.5rem;
+    flex-shrink: 0;
+}
+
+.power-content {
+    flex: 1;
+}
+
+.power-content h3 {
+    color: #4bd5ee;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+.power-content p {
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+.power-content ul {
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+
+.power-content li {
+    margin-bottom: 5px;
+    color: #e0e0e0;
+    line-height: 1.5;
+}
+
+.power-procedure {
+    background: rgba(40, 45, 80, 0.4);
+    border-radius: 6px;
+    padding: 15px;
+    margin-top: 15px;
+}
+
+.power-procedure h4 {
+    color: #4bd5ee;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.power-procedure ol {
+    margin-left: 20px;
+}
+
+.power-procedure li {
+    margin-bottom: 8px;
+    color: #e0e0e0;
+    line-height: 1.5;
+}
+
+.important-notes {
+    margin-top: 30px;
+}
+
+.note-box.important {
+    border-color: #ffc107;
+    background: rgba(255, 193, 7, 0.1);
+}
+
+.note-box.important strong {
+    color: #ffc107;
+}
+
+/* Адаптивность для мобильных */
+@media (max-width: 768px) {
+    .power-card {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+    
+    .hierarchy-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .hierarchy-badge {
+        align-self: flex-start;
+    }
+}
+
+/* Высшее Командование */
+.command-nav {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.command-section {
+    background: rgba(20, 25, 50, 0.6);
+    border: 1px solid #2a4a7a;
+    border-radius: 8px;
+    padding: 25px;
+    margin-bottom: 25px;
+    scroll-margin-top: 20px;
+}
+
+.command-section h2 {
+    color: #4bd5ee;
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #2a4a7a;
+}
+
+.command-intro {
+    line-height: 1.7;
+    font-size: 1.1rem;
+}
+
+.command-highlight {
+    background: rgba(75, 213, 238, 0.1);
+    border: 1px solid #4bd5ee;
+    border-radius: 6px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.documents-info {
+    margin-top: 25px;
+}
+
+.documents-info h3 {
+    color: #4bd5ee;
+    margin-bottom: 15px;
+}
+
+.document-format {
+    background: rgba(30, 35, 70, 0.8);
+    border: 1px solid #3a5a8a;
+    border-radius: 6px;
+    padding: 15px;
+    font-family: monospace;
+    color: #4bd5ee;
+    font-size: 1.1rem;
+}
+
+/* Система званий ВК */
+.command-ranks {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.rank-card {
+    background: rgba(30, 35, 70, 0.6);
+    border-radius: 8px;
+    padding: 25px;
+    border: 1px solid #3a5a8a;
+    position: relative;
+}
+
+.rank-card.gm {
+    border-left: 5px solid #4bd5ee;
+    background: rgba(75, 213, 238, 0.05);
+}
+
+.rank-card.ga {
+    border-left: 5px solid #28a745;
+    background: rgba(40, 167, 69, 0.05);
+}
+
+.rank-card.mcoa {
+    border-left: 5px solid #ffc107;
+    background: rgba(255, 193, 7, 0.05);
+}
+
+.rank-card.moff {
+    border-left: 5px solid #dc3545;
+    background: rgba(220, 53, 69, 0.05);
+}
+
+.rank-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.rank-header h3 {
+    color: #4bd5ee;
+    font-size: 1.3rem;
+    margin: 0;
+}
+
+.rank-level {
+    background: rgba(75, 213, 238, 0.2);
+    color: #4bd5ee;
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    border: 1px solid #4bd5ee;
+}
+
+.rank-content p {
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+.rank-details {
+    background: rgba(40, 45, 80, 0.4);
+    border-radius: 6px;
+    padding: 15px;
+    margin-top: 15px;
+}
+
+.rank-exception {
+    background: rgba(255, 193, 7, 0.1);
+    border: 1px solid #ffc107;
+    border-radius: 4px;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.rank-exception strong {
+    color: #ffc107;
+}
+
+/* Полномочия и обязанности */
+.powers-obligations {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+}
+
+@media (min-width: 992px) {
+    .powers-obligations {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.powers-section, .obligations-section {
+    background: rgba(30, 35, 70, 0.4);
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.powers-section h3, .obligations-section h3 {
+    color: #4bd5ee;
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+}
+
+.powers-list, .obligations-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.power-item, .obligation-item {
+    display: flex;
+    gap: 15px;
+    align-items: flex-start;
+    padding: 12px;
+    background: rgba(40, 45, 80, 0.6);
+    border-radius: 6px;
+    border-left: 3px solid #4bd5ee;
+}
+
+.power-item.important, .obligation-item.important {
+    border-left-color: #ffc107;
+    background: rgba(255, 193, 7, 0.1);
+}
+
+.power-icon, .obligation-icon {
+    font-size: 1.2rem;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.power-text, .obligation-text {
+    flex: 1;
+    line-height: 1.5;
+}
+
+/* Управленческий состав */
+.management-info {
+    margin-top: 20px;
+}
+
+.management-definition {
+    background: rgba(75, 213, 238, 0.1);
+    border: 1px solid #4bd5ee;
+    border-radius: 6px;
+    padding: 15px;
+    margin-bottom: 25px;
+}
+
+.management-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 25px;
+}
+
+@media (min-width: 768px) {
+    .management-content {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.powers-list.detailed, .obligations-list.detailed {
+    gap: 15px;
+}
+
+/* Примечания */
+.notes-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.note-item {
+    display: flex;
+    gap: 15px;
+    background: rgba(30, 35, 70, 0.6);
+    border-radius: 8px;
+    padding: 20px;
+    border: 1px solid #3a5a8a;
+    align-items: flex-start;
+}
+
+.note-item.important {
+    border-left: 5px solid #ffc107;
+    background: rgba(255, 193, 7, 0.05);
+}
+
+.note-icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.note-content {
+    flex: 1;
+}
+
+.note-content h4 {
+    color: #4bd5ee;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.note-content p {
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+.note-exception {
+    background: rgba(255, 193, 7, 0.1);
+    border: 1px solid #ffc107;
+    border-radius: 4px;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.note-exception strong {
+    color: #ffc107;
+}
+
+.ranks-equivalence {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.rank-equivalent {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 10px;
+    background: rgba(40, 45, 80, 0.6);
+    border-radius: 6px;
+    flex-wrap: wrap;
+}
+
+.jedi-rank {
+    color: #6f42c1;
+    font-weight: bold;
+    flex: 1;
+}
+
+.equivalent {
+    color: #ffc107;
+    font-weight: bold;
+}
+
+.command-rank {
+    color: #4bd5ee;
+    font-weight: bold;
+    flex: 1;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .rank-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .rank-level {
+        align-self: flex-start;
+    }
+    
+    .power-item, .obligation-item, .note-item {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+    
+    .rank-equivalent {
+        flex-direction: column;
+        gap: 5px;
+        text-align: center;
+    }
+}
+
+/* Стили для таблицы соответствия званий */
+.rank-comparison-table {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 2rem 0;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.table-header {
+    display: flex;
+    background: rgba(74, 144, 226, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.fleet-column, .command-column {
+    flex: 1;
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.fleet-column h3, .command-column h3 {
+    margin: 0;
+    color: #fff;
+    font-size: 1.2rem;
+}
+
+.table-body {
+    display: flex;
+    flex-direction: column;
+}
+
+.rank-row {
+    display: flex;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    transition: background 0.3s ease;
+}
+
+.rank-row:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.rank-row:last-child {
+    border-bottom: none;
+}
+
+.fleet-rank, .command-rank {
+    flex: 1;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.rank-badge {
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.rank-badge.fleet {
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    color: white;
+}
+
+.rank-badge.command {
+    background: linear-gradient(135deg, #d4af37, #f7ef8a);
+    color: #000;
+}
+
+.rank-name {
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 0.3rem;
+}
+
+.rank-description {
+    color: #ccc;
+    font-size: 0.9rem;
+}
+
+/* Цветовые схемы для разных уровней */
+.command-level {
+    background: rgba(212, 175, 55, 0.1);
+}
+
+.senior-level {
+    background: rgba(106, 13, 173, 0.1);
+}
+
+.officer-level {
+    background: rgba(74, 144, 226, 0.1);
+}
+
+.nco-level {
+    background: rgba(32, 201, 151, 0.1);
+}
+
+.enlisted-level {
+    background: rgba(108, 117, 125, 0.1);
+}
+
+/* Легенда таблицы */
+.table-legend {
+    margin-top: 2rem;
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 6px;
+}
+
+.table-legend h4 {
+    margin-bottom: 1rem;
+    color: #fff;
+}
+
+.legend-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.legend-color {
+    width: 16px;
+    height: 16px;
+    border-radius: 3px;
+}
+
+.legend-color.command-level {
+    background: rgba(212, 175, 55, 0.8);
+}
+
+.legend-color.senior-level {
+    background: rgba(106, 13, 173, 0.8);
+}
+
+.legend-color.officer-level {
+    background: rgba(74, 144, 226, 0.8);
+}
+
+.legend-color.nco-level {
+    background: rgba(32, 201, 151, 0.8);
+}
+
+.legend-color.enlisted-level {
+    background: rgba(108, 117, 125, 0.8);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .table-header {
+        flex-direction: column;
+    }
+    
+    .rank-row {
+        flex-direction: column;
+    }
+    
+    .fleet-rank, .command-rank {
+        padding: 1rem;
+    }
+    
+    .legend-items {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}
+
+/* Стили для иерархической таблицы */
+.hierarchy-table {
+    position: relative;
+    margin: 2rem 0;
+}
+
+.hierarchy-level {
+    position: relative;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.level-label {
+    text-align: center;
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.command-center {
+    display: flex;
+    justify-content: center;
+}
+
+.supreme-rank {
+    text-align: center;
+    padding: 1.5rem;
+    background: rgba(212, 175, 55, 0.2);
+    border-radius: 8px;
+    border: 2px solid rgba(212, 175, 55, 0.5);
+}
+
+.ranks-row {
+    display: flex;
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+.ranks-row:last-child {
+    margin-bottom: 0;
+}
+
+.fleet-column, .command-column {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.rank-item {
+    padding: 1rem;
+    text-align: center;
+    min-height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+}
+
+.rank-item.empty {
+    visibility: hidden;
+}
+
+.rank-badge {
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    min-width: 120px;
+}
+
+.rank-badge.fleet {
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    color: white;
+}
+
+.rank-badge.command {
+    background: linear-gradient(135deg, #d4af37, #f7ef8a);
+    color: #000;
+}
+
+.rank-badge.supreme {
+    background: linear-gradient(135deg, #ff6b35, #ff8e53);
+    color: white;
+    font-size: 1.1rem;
+    padding: 0.7rem 1.2rem;
+}
+
+.rank-name {
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 0.3rem;
+    font-size: 0.9rem;
+}
+
+.rank-description {
+    color: #ccc;
+    font-size: 0.8rem;
+}
+
+/* Стрелки иерархии */
+.command-arrows, .sub-arrows {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    height: 40px;
+    margin: 0 auto;
+    width: 80%;
+}
+
+.arrow-down-left, .arrow-down-right, .arrow-down-center {
+    position: relative;
+    width: 2px;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.3);
+    margin: 0 10%;
+}
+
+.arrow-down-left::after, .arrow-down-right::after, .arrow-down-center::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 10px solid rgba(255, 255, 255, 0.5);
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.command-arrows {
+    width: 60%;
+}
+
+.command-arrows .arrow-down-left {
+    margin-left: 20%;
+}
+
+.command-arrows .arrow-down-right {
+    margin-right: 20%;
+}
+
+/* Цветовые схемы для разных уровней */
+.supreme-command {
+    background: rgba(255, 107, 53, 0.1);
+}
+
+.high-command {
+    background: rgba(212, 175, 55, 0.1);
+}
+
+.senior-officer {
+    background: rgba(106, 13, 173, 0.1);
+}
+
+.junior-officer {
+    background: rgba(74, 144, 226, 0.1);
+}
+
+.nco {
+    background: rgba(32, 201, 151, 0.1);
+}
+
+.enlisted {
+    background: rgba(108, 117, 125, 0.1);
+}
+
+/* Легенда иерархии */
+.hierarchy-legend {
+    margin-top: 2rem;
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 6px;
+}
+
+.hierarchy-legend h4 {
+    margin-bottom: 1rem;
+    color: #fff;
+}
+
+.legend-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.legend-color {
+    width: 16px;
+    height: 16px;
+    border-radius: 3px;
+}
+
+.legend-color.supreme {
+    background: rgba(255, 107, 53, 0.8);
+}
+
+.legend-color.high {
+    background: rgba(212, 175, 55, 0.8);
+}
+
+.legend-color.senior {
+    background: rgba(106, 13, 173, 0.8);
+}
+
+.legend-color.junior {
+    background: rgba(74, 144, 226, 0.8);
+}
+
+.legend-color.nco {
+    background: rgba(32, 201, 151, 0.8);
+}
+
+.legend-color.enlisted {
+    background: rgba(108, 117, 125, 0.8);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .ranks-row {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .command-arrows, .sub-arrows {
+        display: none;
+    }
+    
+    .rank-item {
+        width: 100%;
+        min-height: auto;
+    }
+    
+    .legend-items {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .hierarchy-level {
+        padding: 1rem;
+    }
+}

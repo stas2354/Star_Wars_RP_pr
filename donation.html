@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Донат - Star Wars GMod</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .donation-section {
+            background: rgba(20, 25, 50, 0.6);
+            border: 1px solid #2a4a7a;
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 25px;
+        }
+        
+        .donation-section h2 {
+            color: #4bd5ee;
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #2a4a7a;
+            padding-bottom: 10px;
+        }
+        
+        .back-to-main {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #4bd5ee;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
+        
+        .back-to-main:hover {
+            color: #3a5a8a;
+        }
+        
+        .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+        
+        .package-card {
+            background: rgba(30, 35, 70, 0.8);
+            border: 1px solid #3a5a8a;
+            border-radius: 8px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .package-card.featured {
+            border-color: #ffc107;
+            background: rgba(255, 193, 7, 0.1);
+            transform: scale(1.02);
+        }
+        
+        .package-card:hover {
+            border-color: #4bd5ee;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(75, 213, 238, 0.2);
+        }
+        
+        .package-badge {
+            position: absolute;
+            top: -10px;
+            right: 20px;
+            background: #ffc107;
+            color: #0c0c2a;
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+        
+        .package-name {
+            color: #4bd5ee;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        
+        .package-description {
+            color: #b0b0b0;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+        
+        .package-price {
+            color: #ffc107;
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        
+        .package-features {
+            list-style: none;
+            padding: 0;
+            margin: 25px 0;
+        }
+        
+        .package-features li {
+            padding: 12px 0;
+            border-bottom: 1px solid #2a4a7a;
+            color: #e0e0e0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .package-features li:last-child {
+            border-bottom: none;
+        }
+        
+        .feature-icon {
+            color: #28a745;
+            font-weight: bold;
+        }
+        
+        .donate-btn {
+            display: block;
+            width: 100%;
+            background: linear-gradient(135deg, #28a745, #20c997);
+            color: white;
+            padding: 15px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .donate-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(40, 167, 69, 0.4);
+        }
+        
+        .payment-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 30px 0;
+        }
+        
+        .payment-method {
+            background: rgba(40, 45, 80, 0.6);
+            padding: 20px;
+            border-radius: 6px;
+            border: 1px solid #3a5a8a;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .payment-method:hover {
+            border-color: #4bd5ee;
+            transform: translateY(-2px);
+        }
+        
+        .rules-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .rule-item {
+            display: flex;
+            gap: 15px;
+            padding: 15px;
+            background: rgba(30, 35, 70, 0.6);
+            border-radius: 6px;
+            border-left: 3px solid #4bd5ee;
+            align-items: flex-start;
+        }
+        
+        .rule-number {
+            background: #4bd5ee;
+            color: #0c0c2a;
+            padding: 6px 10px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 0.8rem;
+            min-width: 45px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+        
+        .rule-content {
+            flex: 1;
+        }
+        
+        .rule-content p {
+            margin-bottom: 10px;
+        }
+        
+        .info-box {
+            background: rgba(75, 213, 238, 0.1);
+            border: 1px solid #4bd5ee;
+            border-radius: 6px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .info-box h4 {
+            color: #4bd5ee;
+            margin-bottom: 10px;
+        }
+        
+        .contact-info {
+            text-align: center;
+            padding: 30px;
+            background: rgba(20, 25, 50, 0.6);
+            border-radius: 8px;
+            border: 1px solid #2a4a7a;
+            margin: 30px 0;
+        }
+        
+        .discord-btn {
+            display: inline-block;
+            background: #5865F2;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .discord-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(88, 101, 242, 0.4);
+        }
+    </style>
+</head>
+<body>
+    <!-- Фон со звездами -->
+    <div class="stars" id="stars"></div>
+
+    <!-- Шапка -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <div class="logo-icon">💰</div>
+                <div class="logo-text">СИСТЕМА ДОНАТА</div>
+            </div>
+            <div class="server-info">
+                <div class="server-ip">IP: 185.97.255.43:27527</div>
+                <div class="players-online">
+                    <span class="online-dot"></span>
+                    Онлайн: <span id="online-count">47</span>/100
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Основной контент -->
+    <main class="main-content">
+        <div class="container">
+            <div class="content-header">
+                <a href="index.html" class="back-to-main">← На главную</a>
+                <h1>Система Доната</h1>
+                <p>Поддержите проект и получите эксклюзивные возможности</p>
+            </div>
+
+            <!-- Навигация -->
+            <nav class="charter-nav">
+                <div class="nav-item">
+                    <a href="index.html" class="nav-title">🏠 Главная</a>
+                </div>
+                <div class="nav-item">
+                    <a href="charter.html" class="nav-title">📜 Устав ВАР</a>
+                </div>
+                <div class="nav-item">
+                    <a href="project-rules.html" class="nav-title">📋 Правила проекта</a>
+                </div>
+                <div class="nav-item">
+                    <a href="#donation-rules" class="nav-title">⚖️ Правила доната</a>
+                </div>
+                <div class="nav-item">
+                    <a href="#purchase" class="nav-title">🛒 Покупка</a>
+                </div>
+            </nav>
+
+            <div class="charter-content">
+                <!-- Правила доната -->
+                <section id="donation-rules" class="donation-section">
+                    <h2>⚖️ ПРАВИЛА ДОНАТА</h2>
+                    
+                    <div class="info-box">
+                        <h4>📝 Важная информация</h4>
+                        <p>Донат является добровольным пожертвованием на развитие проекта. Все средства идут на оплату серверов, разработку нового контента и улучшение игрового процесса.</p>
+                    </div>
+                    
+                    <div class="rules-list">
+                        <div class="rule-item">
+                            <div class="rule-number">1.1</div>
+                            <div class="rule-content">
+                                <h3>Добровольность</h3>
+                                <p>Донат является исключительно добровольным пожертвованием и не считается обязательным платежом или платой за доступ к основному игровому процессу.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="rule-item">
+                            <div class="rule-number">1.2</div>
+                            <div class="rule-content">
+                                <h3>Ответственность</h3>
+                                <p>Ответственным за все финансовые операции является Основатель (Создатель) сервера.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="rule-item">
+                            <div class="rule-number">1.3</div>
+                            <div class="rule-content">
+                                <h3>Порядок внесения</h3>
+                                <p>Все финансовые операции производятся исключительно через официальные каналы, указанные лично Создателем.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="rule-item">
+                            <div class="rule-number">1.4</div>
+                            <div class="rule-content">
+                                <h3>Условия и ограничения</h3>
+                                <p>Приобретение донат-предметов не дает игроку права нарушать правила, влиять на игровой баланс или требовать особого отношения от администрации.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="rule-item">
+                            <div class="rule-number">1.5</div>
+                            <div class="rule-content">
+                                <h3>Возврат средств</h3>
+                                <p>Донат-средства, конвертированные в игровые ценности, возврату и компенсации не подлежат. Возврат неизрасходованных средств осуществляется исключительно по усмотрению Создателя.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="rule-item">
+                            <div class="rule-number">1.6</div>
+                            <div class="rule-content">
+                                <h3>Виртуальные ценности</h3>
+                                <p>Все донат-предметы и валюта являются виртуальными, неотчуждаемыми и не подлежат обратному обмену на реальные денежные средства.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="note-box">
+                        <strong>Важно:</strong> Все решения Создателя по финансовым вопросам являются окончательными и обсуждению не подлежат.
+                    </div>
+                </section>
+
+                <!-- Покупка -->
+                <section id="purchase" class="donation-section">
+                    <h2>🛒 ПОКУПКА ФОРМИРОВАНИЙ</h2>
+                    
+                    <div class="info-box">
+                        <h4>🎯 Выберите подходящий вариант</h4>
+                        <p>Создайте собственное формирование с уникальными возможностями. Каждый пакет включает различные привилегии и возможности для вашего отряда.</p>
+                    </div>
+
+                    <div class="packages-grid">
+                        <!-- ЛБК -->
+                        <div class="package-card featured">
+                            <div class="package-badge">ПРЕМИУМ</div>
+                            <div class="package-name">ЛБК</div>
+                            <div class="package-description">Собственное кастомное формирование на сервере</div>
+                            <div class="package-price">5000 руб</div>
+                            
+                            <ul class="package-features">
+                                <li><span class="feature-icon">✓</span> Неограниченное количество слотов</li>
+                                <li><span class="feature-icon">✓</span> 100 HP и 100 брони</li>
+                                <li><span class="feature-icon">✓</span> Универсальное снаряжение</li>
+                                <li><span class="feature-icon">✓</span> Собственная казарма</li>
+                                <li><span class="feature-icon">✓</span> Полная кастомизация</li>
+                                <li><span class="feature-icon">✓</span> Приоритетная поддержка</li>
+                            </ul>
+                            
+                            <button class="donate-btn" onclick="purchasePackage('ЛБК', 5000)">КУПИТЬ ЛБК</button>
+                        </div>
+
+                        <!-- Отряд -->
+                        <div class="package-card">
+                            <div class="package-badge">СТАНДАРТ</div>
+                            <div class="package-name">ОТРЯД</div>
+                            <div class="package-description">Кастомный отряд с расширенными возможностями</div>
+                            <div class="package-price">2000 - 4000 руб</div>
+                            
+                            <ul class="package-features">
+                                <li><span class="feature-icon">✓</span> 4 слота + 1 командный слот (всего 5)</li>
+                                <li><span class="feature-icon">✓</span> 100 HP и 100 брони</li>
+                                <li><span class="feature-icon">✓</span> Универсальное снаряжение</li>
+                                <li><span class="feature-icon">✓</span> Собственная казарма</li>
+                                <li><span class="feature-icon">✓</span> Базовая кастомизация</li>
+                                <li><span class="feature-icon">✓</span> Стандартная поддержка</li>
+                            </ul>
+                            
+                            <button class="donate-btn" onclick="purchasePackage('Отряд', 3000)">ВЫБРАТЬ ОТРЯД</button>
+                        </div>
+
+                        <!-- Подразделение -->
+                        <div class="package-card">
+                            <div class="package-badge">БАЗОВЫЙ</div>
+                            <div class="package-name">ПОДРАЗДЕЛЕНИЕ</div>
+                            <div class="package-description">Собственное кастомное формирование</div>
+                            <div class="package-price">до 2000 руб</div>
+                            
+                            <ul class="package-features">
+                                <li><span class="feature-icon">✓</span> 10 слотов + 1 командный слот (всего 11)</li>
+                                <li><span class="feature-icon">✓</span> 100 HP и 100 брони</li>
+                                <li><span class="feature-icon">✓</span> Стандартное снаряжение</li>
+                                <li><span class="feature-icon">✓</span> Собственная казарма</li>
+                                <li><span class="feature-icon">✓</span> Ограниченная кастомизация</li>
+                                <li><span class="feature-icon">✓</span> Базовая поддержка</li>
+                            </ul>
+                            
+                            <button class="donate-btn" onclick="purchasePackage('Подразделение', 2000)">КУПИТЬ ПОДРАЗДЕЛЕНИЕ</button>
+                        </div>
+                    </div>
+                </section>
+                <!-- Контакты -->
+                <section class="contact-info">
+                    <h3 style="color: #4bd5ee; margin-bottom: 15px;">📞 НУЖНА ПОМОЩЬ?</h3>
+                    <p style="color: #e0e0e0; margin-bottom: 20px;">
+                        По всем вопросам относительно доната, покупки формирований или техническим проблемам обращайтесь в наш Discord сервер
+                    </p>
+                    <a href="#" class="discord-btn" onclick="openDiscord()">ПЕРЕЙТИ В DISCORD</a>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <!-- Подвал -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>Imperial Forces © 2023 | Система доната</p>
+                <p>По всем вопросам обращайтесь в Discord сервер</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Функция покупки пакета
+        function purchasePackage(packageName, price) {
+            const message = `Вы выбрали пакет: ${packageName}\nСтоимость: ${price} руб\n\nДля завершения покупки свяжитесь с администрацией в Discord.`;
+            alert(message);
+        }
+        
+        // Функция открытия Discord
+        function openDiscord() {
+            alert('Присоединяйтесь к нашему Discord серверу для связи с администрацией:\ndiscord.gg/imperial-forces');
+        }
+        
+        // Создание звездного фона
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            if (!starsContainer) return;
+            
+            const starsCount = 150;
+            
+            for (let i = 0; i < starsCount; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+                
+                const size = Math.random() * 2 + 1;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                
+                star.style.left = `${Math.random() * 100}%`;
+                star.style.top = `${Math.random() * 100}%`;
+                
+                const opacity = Math.random() * 0.6 + 0.2;
+                star.style.opacity = opacity;
+                
+                if (Math.random() > 0.8) {
+                    star.style.animation = `twinkle ${Math.random() * 4 + 2}s infinite alternate`;
+                }
+                
+                starsContainer.appendChild(star);
+            }
+        }
+        
+        // Обновление онлайн игроков
+        function updateOnlinePlayers() {
+            const onlineCount = document.getElementById('online-count');
+            if (!onlineCount) return;
+            
+            const baseCount = 47;
+            const variation = Math.floor(Math.random() * 11) - 5;
+            const newCount = Math.max(30, baseCount + variation);
+            onlineCount.textContent = newCount;
+        }
+        
+        // Плавная прокрутка
+        function setupSmoothScroll() {
+            const links = document.querySelectorAll('a[href^="#"]');
+            
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        const headerHeight = document.querySelector('header').offsetHeight;
+                        const targetPosition = targetElement.offsetTop - headerHeight;
+                        
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        }
+        
+        // Инициализация
+        document.addEventListener('DOMContentLoaded', function() {
+            createStars();
+            setupSmoothScroll();
+            setInterval(updateOnlinePlayers, 30000);
+            setTimeout(updateOnlinePlayers, 5000);
+        });
+    </script>
+</body>
+</html>
