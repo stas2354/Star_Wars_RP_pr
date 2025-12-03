@@ -227,6 +227,195 @@ header .container {
     font-weight: 400;
 }
 
+/* CSS стили для блока полномочий руководящего состава */
+.powers-section {
+    background: rgba(20, 25, 50, 0.6);
+    border: 1px solid #2a4a7a;
+    border-radius: 8px;
+    padding: 25px;
+    margin-bottom: 25px;
+    scroll-margin-top: 20px;
+}
+
+.powers-section h2 {
+    color: #4bd5ee;
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #2a4a7a;
+    font-weight: 400;
+}
+
+.power-item {
+    display: flex;
+    gap: 15px;
+    padding: 20px;
+    background: rgba(30, 35, 70, 0.6);
+    border-radius: 6px;
+    border-left: 3px solid #4bd5ee;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.power-number {
+    background: #4bd5ee;
+    color: #0c0c2a;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    min-width: 50px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.power-content {
+    flex: 1;
+}
+
+.power-content h3 {
+    color: #4bd5ee;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+.power-content ul {
+    margin-left: 20px;
+    margin-top: 10px;
+}
+
+.power-content li {
+    margin-bottom: 8px;
+    color: #e0e0e0;
+    line-height: 1.5;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .power-item {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .power-number {
+        align-self: flex-start;
+    }
+}
+/* Исправленные стили для выравнивания руководящего состава */
+.ranks-row {
+    display: flex;
+    justify-content: space-between;
+    margin: 15px 0;
+    gap: 20px;
+    align-items: stretch; /* Добавлено для выравнивания высоты */
+}
+
+.hierarchy-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.rank-item {
+    padding: 20px;
+    border-radius: 6px;
+    text-align: center;
+    width: 100%;
+    max-width: 220px;
+    margin: 5px 0;
+    border: 2px solid;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 180px; /* Фиксированная минимальная высота */
+    height: 100%; /* Занимает всю доступную высоту */
+}
+
+.rank-badge {
+    font-weight: bold;
+    margin: 8px 0;
+    font-size: 1.1rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    flex-shrink: 0; /* Запрещает сжатие */
+}
+
+.rank-description {
+    font-size: 0.85rem;
+    margin-top: 8px;
+    opacity: 0.9;
+    line-height: 1.3;
+    flex-grow: 1; /* Занимает оставшееся пространство */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Уровни иерархии с строгими цветами */
+.level-supreme {
+    background: linear-gradient(135deg, rgba(184, 15, 10, 0.3), rgba(184, 15, 10, 0.1));
+    border-color: #b80f0a;
+}
+
+.level-high {
+    background: linear-gradient(135deg, rgba(193, 154, 0, 0.3), rgba(193, 154, 0, 0.1));
+    border-color: #c19a00;
+}
+
+.level-senior {
+    background: linear-gradient(135deg, rgba(0, 123, 255, 0.3), rgba(0, 123, 255, 0.1));
+    border-color: #007bff;
+}
+
+.level-junior {
+    background: linear-gradient(135deg, rgba(40, 167, 69, 0.3), rgba(40, 167, 69, 0.1));
+    border-color: #28a745;
+}
+
+/* Стили для карточек званий */
+.rank-item.supreme {
+    background: linear-gradient(135deg, #b80f0a, #8c0b08);
+    border-color: #ff6b6b;
+    color: #ffffff;
+}
+
+.rank-item.high {
+    background: linear-gradient(135deg, #c19a00, #967800);
+    border-color: #ffd700;
+    color: #ffffff;
+}
+
+.rank-item.senior {
+    background: linear-gradient(135deg, #0056b3, #004085);
+    border-color: #4bd5ee;
+    color: #ffffff;
+}
+
+.rank-item.junior {
+    background: linear-gradient(135deg, #1e7e34, #155724);
+    border-color: #51cf66;
+    color: #ffffff;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .ranks-row {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .hierarchy-column {
+        width: 100%;
+    }
+    
+    .rank-item {
+        max-width: none;
+        padding: 15px;
+        min-height: 150px; /* Уменьшенная высота на мобильных */
+    }
+}
 /* Вводный текст */
 .intro-text {
     margin-bottom: 20px;
@@ -1791,85 +1980,62 @@ header .container {
     }
 }
 
-/* Стили для иерархической таблицы */
+/* Стили для таблицы иерархии званий */
 .hierarchy-table {
+    background: rgba(20, 25, 50, 0.8);
+    border-radius: 12px;
+    padding: 30px;
+    margin: 30px 0;
+    border: 1px solid #2a4a7a;
     position: relative;
-    margin: 2rem 0;
 }
 
 .hierarchy-level {
+    margin-bottom: 40px;
     position: relative;
-    padding: 1.5rem;
-    margin-bottom: 1rem;
-    border-radius: 8px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.hierarchy-level:last-child {
+    margin-bottom: 0;
 }
 
 .level-label {
     text-align: center;
+    color: #4bd5ee;
     font-weight: bold;
-    color: #fff;
-    margin-bottom: 1rem;
-    font-size: 0.9rem;
+    margin-bottom: 20px;
+    font-size: 1.1rem;
     text-transform: uppercase;
     letter-spacing: 1px;
 }
 
+/* Центральное выравнивание для высшего командования */
 .command-center {
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 .supreme-rank {
+    background: rgba(75, 213, 238, 0.1);
+    border: 2px solid #4bd5ee;
+    border-radius: 10px;
+    padding: 25px;
     text-align: center;
-    padding: 1.5rem;
-    background: rgba(212, 175, 55, 0.2);
-    border-radius: 8px;
-    border: 2px solid rgba(212, 175, 55, 0.5);
-}
-
-.ranks-row {
-    display: flex;
-    margin-bottom: 1rem;
-    position: relative;
-}
-
-.ranks-row:last-child {
-    margin-bottom: 0;
-}
-
-.fleet-column, .command-column {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-}
-
-.rank-item {
-    padding: 1rem;
-    text-align: center;
-    min-height: 100px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 200px;
-}
-
-.rank-item.empty {
-    visibility: hidden;
+    min-width: 300px;
 }
 
 .rank-badge {
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: 20px;
     font-weight: bold;
-    margin-bottom: 0.5rem;
-    font-size: 1rem;
-    min-width: 120px;
+    margin: 5px;
+    font-size: 0.9rem;
 }
 
-.rank-badge.fleet {
-    background: linear-gradient(135deg, #1e3c72, #2a5298);
+.rank-badge.supreme {
+    background: linear-gradient(135deg, #4bd5ee, #3a5a8a);
     color: white;
 }
 
@@ -1878,171 +2044,342 @@ header .container {
     color: #000;
 }
 
-.rank-badge.supreme {
-    background: linear-gradient(135deg, #ff6b35, #ff8e53);
+.rank-badge.fleet {
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
     color: white;
-    font-size: 1.1rem;
-    padding: 0.7rem 1.2rem;
 }
 
 .rank-name {
     font-weight: bold;
     color: #fff;
-    margin-bottom: 0.3rem;
-    font-size: 0.9rem;
+    margin: 10px 0 5px 0;
+    font-size: 1.1rem;
 }
 
 .rank-description {
-    color: #ccc;
-    font-size: 0.8rem;
+    color: #b0b0b0;
+    font-size: 0.9rem;
+    font-style: italic;
+}
+
+/* Строки с званиями */
+.ranks-row {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.fleet-column,
+.command-column {
+    min-width: 250px;
+    display: flex;
+    justify-content: center;
+}
+
+.rank-item {
+    background: rgba(30, 35, 70, 0.8);
+    border: 1px solid #3a5a8a;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    min-width: 200px;
+    transition: all 0.3s ease;
+}
+
+.rank-item:hover {
+    border-color: #4bd5ee;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(75, 213, 238, 0.2);
+}
+
+.rank-item.empty {
+    background: transparent;
+    border: 1px dashed #3a5a8a;
+    opacity: 0.5;
+}
+
+.rank-item.empty:hover {
+    border-color: #3a5a8a;
+    transform: none;
+    box-shadow: none;
 }
 
 /* Стрелки иерархии */
-.command-arrows, .sub-arrows {
+.command-arrows {
     display: flex;
     justify-content: space-between;
     position: relative;
     height: 40px;
-    margin: 0 auto;
-    width: 80%;
+    margin: 10px 0;
 }
 
-.arrow-down-left, .arrow-down-right, .arrow-down-center {
+.command-arrow-single {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    height: 40px;
+    margin: 10px 0;
+}
+
+.arrow-down-center,
+.arrow-down-left,
+.arrow-down-right {
     position: relative;
     width: 2px;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.3);
-    margin: 0 10%;
+    background: #4bd5ee;
+    margin: 0 auto;
 }
 
-.arrow-down-left::after, .arrow-down-right::after, .arrow-down-center::after {
+.arrow-down-center {
+    height: 40px;
+}
+
+.arrow-down-left,
+.arrow-down-right {
+    height: 40px;
+    width: 150px;
+}
+
+.arrow-down-left::after,
+.arrow-down-right::after,
+.arrow-down-center::after {
     content: '';
     position: absolute;
-    bottom: 0;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
     width: 0;
     height: 0;
     border-left: 6px solid transparent;
     border-right: 6px solid transparent;
-    border-top: 10px solid rgba(255, 255, 255, 0.5);
-    left: 50%;
-    transform: translateX(-50%);
+    border-top: 8px solid #4bd5ee;
 }
 
-.command-arrows {
-    width: 60%;
+.arrow-down-left {
+    transform: rotate(-30deg);
+    transform-origin: top center;
 }
 
-.command-arrows .arrow-down-left {
-    margin-left: 20%;
+.arrow-down-right {
+    transform: rotate(30deg);
+    transform-origin: top center;
 }
 
-.command-arrows .arrow-down-right {
-    margin-right: 20%;
+.sub-arrows {
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+    position: relative;
+    height: 40px;
+    margin: 10px 0;
 }
 
-/* Цветовые схемы для разных уровней */
+/* Цветовые схемы для уровней */
 .supreme-command {
-    background: rgba(255, 107, 53, 0.1);
+    background: rgba(212, 175, 55, 0.1);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+.sector-command {
+    background: rgba(106, 13, 173, 0.1);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 30px;
 }
 
 .high-command {
-    background: rgba(212, 175, 55, 0.1);
+    background: rgba(74, 144, 226, 0.1);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 30px;
 }
 
 .senior-officer {
-    background: rgba(106, 13, 173, 0.1);
+    background: rgba(32, 201, 151, 0.1);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 30px;
 }
 
 .junior-officer {
-    background: rgba(74, 144, 226, 0.1);
+    background: rgba(255, 193, 7, 0.1);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 30px;
 }
 
 .nco {
-    background: rgba(32, 201, 151, 0.1);
+    background: rgba(108, 117, 125, 0.1);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 30px;
 }
 
 .enlisted {
-    background: rgba(108, 117, 125, 0.1);
+    background: rgba(40, 167, 69, 0.1);
+    border-radius: 10px;
+    padding: 20px;
 }
 
-/* Легенда иерархии */
+/* Легенда */
 .hierarchy-legend {
-    margin-top: 2rem;
-    padding: 1rem;
-    background: rgba(0, 0, 0, 0.2);
-    border-radius: 6px;
+    margin-top: 40px;
+    padding: 20px;
+    background: rgba(30, 35, 70, 0.6);
+    border-radius: 8px;
+    border: 1px solid #3a5a8a;
 }
 
 .hierarchy-legend h4 {
-    margin-bottom: 1rem;
-    color: #fff;
+    color: #4bd5ee;
+    margin-bottom: 15px;
+    text-align: center;
 }
 
 .legend-items {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    justify-items: center;
 }
 
 .legend-item {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 10px;
 }
 
 .legend-color {
-    width: 16px;
-    height: 16px;
-    border-radius: 3px;
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .legend-color.supreme {
-    background: rgba(255, 107, 53, 0.8);
-}
-
-.legend-color.high {
     background: rgba(212, 175, 55, 0.8);
 }
 
-.legend-color.senior {
+.legend-color.sector {
     background: rgba(106, 13, 173, 0.8);
 }
 
-.legend-color.junior {
+.legend-color.high {
     background: rgba(74, 144, 226, 0.8);
 }
 
-.legend-color.nco {
+.legend-color.senior {
     background: rgba(32, 201, 151, 0.8);
 }
 
-.legend-color.enlisted {
+.legend-color.junior {
+    background: rgba(255, 193, 7, 0.8);
+}
+
+.legend-color.nco {
     background: rgba(108, 117, 125, 0.8);
+}
+
+.legend-color.enlisted {
+    background: rgba(40, 167, 69, 0.8);
 }
 
 /* Адаптивность */
 @media (max-width: 768px) {
+    .hierarchy-table {
+        padding: 15px;
+    }
+
     .ranks-row {
         flex-direction: column;
-        gap: 1rem;
+        align-items: center;
+        gap: 15px;
     }
-    
-    .command-arrows, .sub-arrows {
+
+    .fleet-column,
+    .command-column {
+        min-width: auto;
+        width: 100%;
+    }
+
+    .rank-item {
+        min-width: auto;
+        width: 100%;
+        max-width: 280px;
+    }
+
+    .supreme-rank {
+        min-width: auto;
+        width: 100%;
+        max-width: 280px;
+    }
+
+    .command-arrows,
+    .sub-arrows {
         display: none;
     }
-    
-    .rank-item {
-        width: 100%;
-        min-height: auto;
-    }
-    
+
     .legend-items {
-        flex-direction: column;
-        gap: 0.5rem;
+        grid-template-columns: 1fr;
+        justify-items: start;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hierarchy-level {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.hierarchy-level:nth-child(odd) {
+    animation-delay: 0.1s;
+}
+
+.hierarchy-level:nth-child(even) {
+    animation-delay: 0.2s;
+}
+
+/* Стили для новых карточек */
+.military-power-card.council {
+    border-left: 4px solid #8B4513; /* Коричневый для совета */
+    background: linear-gradient(135deg, rgba(139, 69, 19, 0.1), rgba(139, 69, 19, 0.05));
+}
+
+.military-power-card.grand-master {
+    border-left: 4px solid #FFD700; /* Золотой для гранд-мастера */
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 215, 0, 0.05));
+}
+
+.military-power-card.independent {
+    border-left: 4px solid #808080; /* Серый для независимых */
+    background: linear-gradient(135deg, rgba(128, 128, 128, 0.1), rgba(128, 128, 128, 0.05));
+}
+
+.military-power-card.high-general {
+    border-left: 4px solid #C41E3A; /* Багровый для высшего генерала */
+    background: linear-gradient(135deg, rgba(196, 30, 58, 0.1), rgba(196, 30, 58, 0.05));
+}
+
+/* Адаптация для мобильных устройств */
+@media (max-width: 768px) {
+    .military-powers-list {
+        grid-template-columns: 1fr;
     }
     
-    .hierarchy-level {
-        padding: 1rem;
+    .military-power-card {
+        margin-bottom: 1rem;
     }
 }
